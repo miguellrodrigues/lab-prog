@@ -6,7 +6,7 @@ Este repositório contém exercícios referentes a disciplina de Laboratório de
 
 ``` 
   Lab - 25/08/2020
-  Lab - 31.08/2020
+  Lab - 31/08/2020
 ```
 
 ### Autor
