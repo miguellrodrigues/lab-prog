@@ -2,18 +2,18 @@
 
 int main(void) 
 {
-    float numbers[4], media;
+    float number, media;
 
     printf("\n");
 
-    for (size_t i = 0; i < sizeof(numbers) / sizeof(float); i++)
+    for (size_t i = 0; i < 4; i++)
     {
         printf("Digite o %d valor: ", i + 1);
-        scanf("%f", &numbers[i]);
+        scanf("%f", &number);
 
         float weight = i + 1;
 
-        media += numbers[i] * weight;
+        media += number * weight;
     }
 
     media /= 10.0;
