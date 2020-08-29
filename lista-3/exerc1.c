@@ -13,6 +13,8 @@ int main(void)
         printf("\nAs empresas do primeiro e segundo grupos devem suspender as atividades");
     } else if (indice >= 0.5) {
          printf("\nTodas as empresas devem suspender as atividades");
+    } else {
+         printf("\nNenhuma das empresas devem suspender as atividades");
     }
 
     return 0;

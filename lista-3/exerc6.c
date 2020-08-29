@@ -26,29 +26,37 @@ int main(void)
     {
         printf("\nA B e C nao formam triangulo algum");
     }
-    if (pow(lados[0], 2.0) == pow(lados[1], 2.0) + pow(lados[2], 2.0))
+    else
     {
-        printf("\nA B e C formam um triangulo retangulo");
-    }
-    if (pow(lados[0], 2.0) > pow(lados[1], 2.0) + pow(lados[2], 2.0))
-    {
-        printf("\nA B e C formam um triangulo obtusangulo");
-    }
-    if (pow(lados[0], 2.0) < pow(lados[1], 2.0) + pow(lados[2], 2.0))
-    {
-        printf("\nA B e C formam um triangulo acutangulo");
-    }
-    if (lados[0] == lados[1] && lados[0] == lados[2])
-    {
-        printf("\nA B e C formam um triangulo equilatero");
-    }
-    if (lados[0] == lados[1] || lados[1] == lados[2] || lados[0] == lados[2])
-    {
-        printf("\nA B e C formam um triangulo isoceles");
-    }
-    if (lados[0] != lados[1] && lados[0] != lados[2] && lados[1] != lados[2])
-    {
-        printf("\nA B e C formam um triangulo escaleno");
+        if (pow(lados[0], 2.0) == pow(lados[1], 2.0) + pow(lados[2], 2.0))
+        {
+            printf("\nA B e C formam um triangulo retangulo");
+        }
+
+        if (pow(lados[0], 2.0) > pow(lados[1], 2.0) + pow(lados[2], 2.0))
+        {
+            printf("\nA B e C formam um triangulo obtusangulo");
+        }
+
+        if (pow(lados[0], 2.0) < pow(lados[1], 2.0) + pow(lados[2], 2.0))
+        {
+            printf("\nA B e C formam um triangulo acutangulo");
+        }
+
+        if (lados[0] == lados[1] && lados[0] == lados[2])
+        {
+            printf("\nA B e C formam um triangulo equilatero");
+        }
+
+        if (lados[0] == lados[1] || lados[1] == lados[2] || lados[0] == lados[2])
+        {
+            printf("\nA B e C formam um triangulo isoceles");
+        }
+
+        if (lados[0] != lados[1] && lados[0] != lados[2] && lados[1] != lados[2])
+        {
+            printf("\nA B e C formam um triangulo escaleno");
+        }
     }
 
     return 0;
