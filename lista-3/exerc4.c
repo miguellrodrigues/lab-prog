@@ -30,13 +30,16 @@ int main(void)
     printf("\nDigite o numero de filhos com idade inferior a 14 anos: ");
     scanf("%d", &filhos);
 
+    printf("\nDigite o salario familia: ");
+    scanf("%f", &salarioFamilia);
+
     printf("\nDigite o tempo de servico (Anos): ");
     scanf("%d", &tempoServico);
 
     salarioBruto = horasTrabalhadas * salarioHora;
     desconto *= salarioBruto;
 
-    salarioFamilia = salarioBruto / filhos;
+    salarioFamilia /= filhos;
 
     if (salarioBruto <= 1372.82)
     {
@@ -65,7 +68,7 @@ int main(void)
         adicional += 0.015 * salarioBruto;
     }
 
-    printf("\nSalario bruto: %.3f\nDesconto INSS: %.3f\nImposto de renda: %.3f\nAdicional: %.3f\n", salarioBruto, desconto, ir, adicional);
+    printf("\nSalario bruto: %.3f\nDesconto INSS: %.3f\nImposto de renda: %.3f\nAdicional: %.3f\nSalario familia: %f\n", salarioBruto, desconto, ir, adicional, salarioFamilia);
 
     return 0;
 }
