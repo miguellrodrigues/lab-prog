@@ -3,14 +3,14 @@
 
 int main(void)
 {
-    float lados[3], x, a, b, c;
+    float lados[3], x, a = 0, b = 0, c = 0;
 
     printf("Digite 3 valores de lados: ");
-    scanf("%f %f %f", &a, &b, &c);
+    scanf("%f %f %f", &lados[0], &lados[1], &lados[2]);
 
-    for (size_t i = 0; i < 3; ++i)
+    for (size_t i = 0; i <= 2; ++i)
     {
-        for (size_t j = i + 1; j < 3; ++j)
+        for (size_t j = i + 1; j <= 2; ++j)
         {
             if (lados[i] < lados[j])
             {
