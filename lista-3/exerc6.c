@@ -8,9 +8,9 @@ int main(void)
     printf("Digite 3 valores de lados: ");
     scanf("%f %f %f", &lados[0], &lados[1], &lados[2]);
 
-    for (size_t i = 0; i <= 2; ++i)
+    for (size_t i = 0; i < 3; ++i)
     {
-        for (size_t j = i + 1; j <= 2; ++j)
+        for (size_t j = i + 1; j < 3; ++j)
         {
             if (lados[i] < lados[j])
             {

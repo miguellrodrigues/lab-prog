@@ -1,10 +1,4 @@
 #include "stdio.h"
-#include "stdbool.h"
-
-bool inRange(float number, float min, float max)
-{
-    return number >= min && number <= max;
-}
 
 int main(void)
 {
@@ -68,7 +62,7 @@ int main(void)
         adicional += 0.015 * salarioBruto;
     }
 
-    printf("\nSalario bruto: %.3f\nDesconto INSS: %.3f\nImposto de renda: %.3f\nAdicional: %.3f\nSalario familia: %f\n", salarioBruto, desconto, ir, adicional, salarioFamilia);
+    printf("\nSalario bruto: %.2f\nDesconto INSS: %.2f\nImposto de renda: %.2f\nAdicional: %.2f\nSalario familia: %f\n", salarioBruto, desconto, ir, adicional, salarioFamilia);
 
     return 0;
 }
