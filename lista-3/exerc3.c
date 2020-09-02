@@ -28,8 +28,8 @@ void sort(int size, int op, float list[])
 
 int main(void)
 {
-    int i;
-    float real[3], a, higher = 0;
+    unsigned int i;
+    float real[3];
 
     printf("Digite um valor inteiro de 1 a 3: ");
     scanf("%d", &i);
@@ -49,13 +49,9 @@ int main(void)
     }
     else if (i == 3)
     {
-        for (int i = 0; i < 4; ++i)
-        {
-            if (real[i] > higher)
-                higher = real[i];
-        }
+        sort(3, 1, real);
 
-        printf("O maior valor e`: %f", higher);
+        printf("O maior valor e`: %.2f", real[2]);
     }
 
     return 0;
