@@ -34,6 +34,11 @@ int main(void)
     printf("Digite um valor inteiro de 1 a 3: ");
     scanf("%d", &i);
 
+    while (i != 1 && i != 2 && i != 3) {
+        printf("\nDigite um valor inteiro de 1 a 3: ");
+        scanf("%d", &i);
+    }
+
     printf("Digite o valor de a, b e c: ");
     scanf("%f %f %f", &real[0], &real[1], &real[2]);
 
