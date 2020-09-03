@@ -1,7 +1,5 @@
 #include "stdio.h"
 
-//a cada 50 segundos perde metada da sua massa
-
 int main(void)
 {
     float mass = 0.f, time = 0.f;
