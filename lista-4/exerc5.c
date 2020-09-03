@@ -17,7 +17,7 @@ struct game_data
 int main(void)
 {
     bool run = true;
-    char message[3], yes[] = {'S', 'i', 'm'}, no[] = {'N', 'a', 'o'};
+    char message[3], yes[3] = {'s', 'i', 'm'};
 
     struct game_data data;
 
@@ -67,7 +67,7 @@ int main(void)
 
         printf("\n");
 
-        printf("\nDeseja iniciar um novo duelo ? (Sim ou Nao) ");
+        printf("\nDeseja iniciar um novo duelo ? (sim ou nao) ");
         scanf("%s", &message);
 
         for (size_t i = 0; i < 3; i++)

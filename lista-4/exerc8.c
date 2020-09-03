@@ -14,7 +14,9 @@ int main(void)
         sum += pow(i, 2.0);
     }
 
-    printf("Somatorio: %.3f, Formula: %.3f", sum, formula);
+    printf("\n");
+
+    printf("Somatorio: %.3f\nFormula: %.3f\n", sum, formula);
 
     return 0;
 }
