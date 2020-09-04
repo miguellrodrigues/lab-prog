@@ -96,7 +96,7 @@ int main(void)
     printf("\nQuantidade de gols do Atletico: %d", data.golsCruzeiro);
     printf("\n");
     printf("\nQuantidade de empates: %d", data.empates);
-    printf("\nTime com maior numero de vitorias: %s", data.scoreAtletico > data.scoreCruzeiro ? "Atletico" : data.scoreAtletico > data.scoreCruzeiro ? "Cruzeiro" : "Nenhum");
+    printf("\nTime com maior numero de vitorias: %s", data.scoreAtletico > data.scoreCruzeiro ? "Atletico" : data.scoreAtletico < data.scoreCruzeiro ? "Cruzeiro" : "Nenhum");
     printf("\n");
 
     return 0;
