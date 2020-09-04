@@ -7,9 +7,9 @@ int main(void)
     printf("\nDigite o numero de alunos: ");
     scanf("%d", &alunos);
 
-    while (alunos <= 0) {
-        printf("\nNumero invalido, digite novamente o numero de alunos: ");
-        scanf("%d", &alunos);
+    if (alunos <= 0) {
+        printf("\nNumero de alunos invalido");
+        return -1;
     }
 
     float notas[alunos], media = 0;

@@ -6,11 +6,9 @@ int main(void)
     float federalistPopulation = 200000000;
 
     unsigned int counter = 0;
-    while (repuplicPopulation < federalistPopulation) {
-        repuplicPopulation += repuplicPopulation * 0.03;
 
-        federalistPopulation += federalistPopulation * 0.015;
-
+    for (float a = repuplicPopulation, b = federalistPopulation; a < b; a += a * 0.03, b += b * 0.015)
+    {
         counter++;
     }
 

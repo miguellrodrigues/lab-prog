@@ -30,7 +30,7 @@ int main(void)
     data.golsCruzeiro = 0;
     data.scoreCruzeiro = 0;
 
-    while (run)
+    for (;;)
     {
         data.partidas++;
 
@@ -77,6 +77,9 @@ int main(void)
                 run = false;
             }
         }
+
+        if (!run)
+            break;
     }
 
     for (size_t i = 0; i < 100; i++)

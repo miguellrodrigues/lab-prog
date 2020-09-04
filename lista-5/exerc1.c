@@ -2,7 +2,7 @@
 
 float higher(float a, float b, float c)
 {
-    return (a > b && a > c) ? a : (b > a && b > c) ? b : (c > a && c > b) ? c : 0;
+    return (a > b && a > c) ? a : (b > a && b > c) ? b : (c > a && c > b) ? c : -1;
 }
 
 int main(void)
@@ -14,7 +14,7 @@ int main(void)
 
     maior = higher(a, b, c);
 
-    if (maior > 0)
+    if (maior != -1)
     {
         printf("O maior valor foi: %.3f", maior);
     }
