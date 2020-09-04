@@ -2,10 +2,7 @@
 
 int main(void)
 {
-    float repuplicPopulation = 90000000;
-    float federalistPopulation = 200000000;
-
-    unsigned int counter = 0;
+    unsigned int repuplicPopulation = 90000000, federalistPopulation = 200000000, counter = 0;
 
     for (float a = repuplicPopulation, b = federalistPopulation; a < b; a += a * 0.03, b += b * 0.015)
     {
