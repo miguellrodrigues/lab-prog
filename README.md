@@ -8,6 +8,8 @@ Este repositório contém exercícios referentes a disciplina de Laboratório de
   Lista 1 - 25/08/2020
   Lista 2 - 31/08/2020
   Lista 3 - //
+  Lista 4 - Entregue
+  Lista 4 - Entregue
 ```
 
 ### Autor
