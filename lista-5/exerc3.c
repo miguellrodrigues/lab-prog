@@ -7,7 +7,7 @@ bool inRange(float number, float min, float max)
 }
 
 int main()
-{    
+{  
     float salarioAtual, salarioReajuste, aumento;
 
     printf("Digite o valor do salario atual: ");

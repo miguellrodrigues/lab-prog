@@ -30,11 +30,11 @@ int main(void)
     data.golsCruzeiro = 0;
     data.scoreCruzeiro = 0;
 
+    unsigned int golsAtletico = 0, golsCruzeiro = 0, result = 0;
+
     for (;;)
     {
         data.partidas++;
-
-        unsigned int golsAtletico = 0, golsCruzeiro = 0, result = 0;
 
         printf("\nDigite o numero de gols marcado pelo Atletico: ");
         scanf("%d", &golsAtletico);

@@ -9,8 +9,9 @@ int main(void)
     scanf("%d", &n);
 
     float sum = 0, formula = ((n * (n + 1)) * (2 * n + 1)) / 6;
-    
-    for (size_t i = 1; i < n + 1; i++) {
+
+    for (size_t i = 1; i < n + 1; i++)
+    {
         sum += pow(i, 2.0);
     }
 

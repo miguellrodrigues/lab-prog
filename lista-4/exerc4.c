@@ -8,8 +8,9 @@ int main(void)
 
     printf("Digite o valor da massa inicial em gramas: ");
     scanf("%f", &mass);
-    
-    for (counter = 0; mass >= 0.5; counter++) {
+
+    for (counter = 0; mass >= 0.5; counter++)
+    {
         mass /= 2;
     }
 

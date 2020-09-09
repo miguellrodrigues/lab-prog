@@ -16,13 +16,15 @@ int main(void)
     printf("Digite o valor de n: ");
     scanf("%d", &n);
 
+    n++;
+
     size_t j = 0;
-    for (size_t i = 100; i > 100 - n; i--) {
-        sum += i / fatorial(j);
-        j++;
+    for (size_t i = 100; i > 100 - n; i--)
+    {
+        sum += i / fatorial(j++);
     }
 
-    printf("Somatorio: %.3f", sum);
+    printf("Somatorio: %f", sum);
 
-    return 0; 
+    return 0;
 }

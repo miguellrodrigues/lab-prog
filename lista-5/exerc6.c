@@ -3,11 +3,10 @@
 int main()
 {
     unsigned int a, b, run = 1;
+    char cont[1];
 
-    while (run == 1)
+    while (1)
     {
-        char cont[1];
-
         printf("\nDigite dois valores inteiros (x > 0): ");
         scanf("%d %d", &a, &b);
 
@@ -29,7 +28,7 @@ int main()
         }
 
         if (cont[0] != 'S')
-            run = 0;
+            break;
     }
 
     return 0;
