@@ -62,7 +62,7 @@ int main(void)
         c = cargo(codigo);
     }
 
-    printf("\nCargo: %s\n", cargo(codigo));
+    printf("\nCargo: %s\n", c);
 
     return 0;
 }
