@@ -28,6 +28,13 @@ int main(void)
         printf("\nDigite a nota do %d aluno: ", i + 1);
 
         scanf("%f", &notas[i]);
+
+        while (notas[i] < 0)
+        {
+            printf("\nNota invalida, digite novamente a %d nota do aluno: ", i + 1);
+            scanf("%f", &notas[i]);
+        }
+        
     }
 
     for (size_t j = 0; j < alunos; j++)

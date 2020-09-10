@@ -26,6 +26,12 @@ int main(void)
         printf("Digite a operacao: \n\nadicao (1)\nsubtracao (2)\nmultiplicacao (3)\ndivisao (4)\nsair (5)\n\n");
         scanf("%d", &operation);
 
+        while (operation == 4 && num2 <= 0)
+        {
+            printf("O divisor nao pode ser 0, digite o valor do segundo numero novamente: ");
+            scanf("%f", &num2);
+        }
+
         result = num1;
 
         switch (operation)

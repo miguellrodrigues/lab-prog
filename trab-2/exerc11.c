@@ -17,18 +17,18 @@ int main(void)
     {
         printf("Digite o valor da %d nota: ", (i + 1));
         scanf("%f", &notas[i]);
-
-        while (notas[i] < 0)
-        {
-            printf("Valor invalido, digite novamente o valor da %d nota: ", (i + 1));
-            scanf("%f", &notas[i]);
-        }
     }
 
     char option[1];
 
     printf("\nQual media voce deseja calcular ? Aritimetica (A) | Ponderada (P) | Harmonica (H) ");
     scanf("%s", &option);
+
+    while (option[0] != 'A' && option[0] != 'P' && option[0] != 'H')
+    {
+        printf("\nOpcao invalida, digite uma opcao valida: Aritimetica (A) | Ponderada (P) | Harmonica (H) ");
+        scanf("%s", &option);
+    }
 
     switch (option[0])
     {
@@ -48,7 +48,6 @@ int main(void)
         media /= 10;
         break;
     case 'H':
-
         for (size_t i = 1; i <= 3; i++)
         {
             media += 1 / notas[i - 1];

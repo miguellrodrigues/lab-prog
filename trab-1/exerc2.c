@@ -10,7 +10,6 @@
 
 int main(void)
 {
-
     int numbers[9999];
 
     int num = 0, counter = 0;

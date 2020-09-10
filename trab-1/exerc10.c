@@ -27,7 +27,7 @@ int main(void)
         counter++;
     }
 
-    size_t pares = 0;
+    size_t pares      = 0;
 
     float  media      = 0,
            mediaPares = 0;

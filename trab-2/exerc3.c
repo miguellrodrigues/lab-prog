@@ -9,52 +9,52 @@
 #include <stdio.h>
 #include <malloc.h>
 
-int cargo(unsigned int codigo)
+char* cargo(unsigned int codigo)
 {
     switch (codigo)
     {
     case 101:
-        return 1;
+        return "Vendedor";
         break;
 
     case 102:
-        return 2;
+        return "Atendente";
         break;
 
     case 103:
-        return 3;
+        return "Auxiliar tecnico";
         break;
 
     case 104:
-        return 4;
+        return "Assistente";
         break;
 
     case 105:
-        return 5;
+        return "Coordenador de grupo";
         break;
 
     case 106:
-        return 6;
+        return "Gerente";
         break;
 
     default:
-        return -1;
+        return ".";
         break;
     }
 
-    return -1;
+    return ".";
 }
 
 int main(void)
 {
     unsigned int codigo;
 
-    printf("\nDigite o codigo: ");
+    printf("\nDigite o codigo: (101 .. 106) ");
     scanf("%d", &codigo);
 
-    int c = cargo(codigo);
+    char *c = cargo(codigo);
 
-    while (c < 0)
+    while (c[0] == '.')
     {
         printf("\nCodivo invalido, digite o codigo: ");
         scanf("%d", &codigo);
@@ -62,33 +62,7 @@ int main(void)
         c = cargo(codigo);
     }
 
-    printf("\nCargo: ");
-
-    switch (c)
-    {
-    case 1:
-        printf("Vendedor");
-        break;
-    case 2:
-        printf("Atendente");
-        break;
-    case 3:
-        printf("Auxiliar tecnico");
-        break;
-    case 4:
-        printf("Assistente");
-        break;
-    case 5:
-        printf("Coordenador de group");
-        break;
-    case 6:
-        printf("Gerente");
-        break;
-    default:
-        break;
-    }
-
-    printf("\n");
+    printf("\nCargo: %s\n", cargo(codigo));
 
     return 0;
 }
