@@ -7,8 +7,8 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
-#include "stdlib.h"
 
 float distance(float x1, float y1, float x2, float y2)
 {
