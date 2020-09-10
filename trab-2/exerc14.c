@@ -7,12 +7,13 @@
 */
 
 #include <stdio.h>
+#include <math.h>
 
 int main(void)
 {
-    float sum = 0, j = 225;
+    float sum = 0, j = 15;
 
-    size_t decrement = 29, prev = 1;
+    size_t prev = 1;
 
     size_t i = 0;
 
@@ -20,12 +21,9 @@ int main(void)
     {
         i = (i + prev);
 
-        sum += (i / j);
-        
-        prev = i;
+        sum += (i / pow(j--, 2.0));
 
-        j -= decrement;
-        decrement -= 2;
+        prev = i;
     }
 
     printf("\nSomatorio: %f", sum);
