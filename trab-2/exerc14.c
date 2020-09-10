@@ -7,7 +7,6 @@
 */
 
 #include <stdio.h>
-#include <math.h>
 
 int main(void)
 {
@@ -22,7 +21,7 @@ int main(void)
         i = (i + prev);
 
         sum += (i / j);
-
+        
         prev = i;
 
         j -= decrement;
