@@ -37,8 +37,8 @@ int main(void)
         data[1][1] += golsCruzeiro;
         data[2][1] += golsAmerica;
 
-        result = (golsAtletico > golsCruzeiro && golsAtletico > golsAmerica) ? 1 :
-                 (golsCruzeiro > golsAtletico && golsCruzeiro > golsAmerica) ? 2 :
+        result = (golsAtletico > golsCruzeiro && golsAtletico > golsAmerica)  ? 1 :
+                 (golsCruzeiro > golsAtletico && golsCruzeiro > golsAmerica)  ? 2 :
                  (golsAmerica  > golsAtletico && golsAmerica  > golsCruzeiro) ? 3 : 0;
 
         switch (result)

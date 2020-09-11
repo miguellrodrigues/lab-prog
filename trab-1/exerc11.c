@@ -31,7 +31,7 @@ int main(void)
             printf("O divisor nao pode ser 0, digite o valor do segundo numero novamente: ");
             scanf("%f", &num2);
         }
-
+        
         result = num1;
 
         switch (operation)
