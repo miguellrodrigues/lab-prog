@@ -10,6 +10,9 @@ Este repositório contém exercícios referentes a disciplina de Laboratório de
   Lista 3 - //
   Lista 4 - Entregue
   Lista 5 - Entregue
+
+  Trab 1  - Completo
+  Trab 2  - Completo
 ```
 
 ### Autor
