@@ -8,12 +8,13 @@
 
 #include <stdio.h>
 
-float mediaCombustivel(float km, float comb) {
+float mediaCombustivel(float km, float comb)
+{
     return km / comb;
 }
 
 int main(void)
-{   
+{
     float km, combustivel;
 
     printf("\nDigite o numero de kilometros rodados: ");

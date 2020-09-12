@@ -10,7 +10,7 @@
 #include <math.h>
 
 int main(void)
-{   
+{
     float numbers[9999], input, media = 0, dp = 0;
 
     size_t counter = 0;
@@ -27,19 +27,19 @@ int main(void)
 
         counter++;
     }
-    
+
     for (size_t i = 1; i <= counter; i++)
     {
         media += numbers[i - 1];
     }
 
     media /= counter;
-    
+
     for (size_t i = 0; i < counter; i++)
     {
         dp += pow((numbers[i] - media), 2.0) / counter;
     }
-    
+
     dp = sqrt(dp);
 
     printf("\nMedia: %.3f", media);

@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <malloc.h>
 
-char* cargo(unsigned int codigo)
+char *cargo(unsigned int codigo)
 {
     switch (codigo)
     {

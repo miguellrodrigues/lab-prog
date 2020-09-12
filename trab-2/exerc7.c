@@ -9,7 +9,7 @@
 #include <stdio.h>
 
 int main(void)
-{   
+{
     float kiloWatts = 0, result = 0;
 
     printf("\nDigite o valor dos KW: ");

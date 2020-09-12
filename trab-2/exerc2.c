@@ -8,8 +8,9 @@
 
 #include <stdio.h>
 
-float calculoAumento(float salario, int aumento) {
-     return salario * (aumento / 100.0); 
+float calculoAumento(float salario, int aumento)
+{
+    return salario * (aumento / 100.0);
 }
 
 int main(void)
