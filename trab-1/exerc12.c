@@ -12,7 +12,7 @@ int main(void)
 {
     size_t n = 0, sum = 0;
 
-    printf("\nDigite o valor de linhas: ");
+    printf("\nDigite o numero de linhas a serem impressas: ");
     scanf("%d", &n);
 
     printf("\n");

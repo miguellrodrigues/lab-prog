@@ -11,9 +11,10 @@
 
 int main(void)
 {
-    int *numbers = calloc(100, sizeof(int)), input = 0;
+    int *numbers = calloc(100, sizeof(int));
 
-    int counter = 0;
+    int counter  = 0,
+        input    = 0;
 
     printf("\n");
 
@@ -35,9 +36,9 @@ int main(void)
     float  media      = 0,
            mediaPares = 0;
 
-    int sum        = 0,
-        higher     = numbers[0],
-        lower      = numbers[0];
+    int sum           = 0,
+        higher        = numbers[0],
+        lower         = numbers[0];
 
     for (size_t i = 0; i < counter; i++)
     {

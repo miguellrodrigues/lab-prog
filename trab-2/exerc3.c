@@ -56,7 +56,7 @@ int main(void)
 
     while (c[0] == '.')
     {
-        printf("\nCodivo invalido, digite o codigo: ");
+        printf("\nCodivo invalido, digite um codigo valido (101 .. 106): ");
         scanf("%d", &codigo);
 
         c = cargo(codigo);

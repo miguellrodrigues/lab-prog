@@ -26,7 +26,7 @@ int main(void)
 
     while (1)
     {
-        printf("Digite as coordenadas da seguinte forma: (X1,Y1,X2,Y2): ");
+        printf("\nDigite as coordenadas da seguinte forma: (X1,Y1,X2,Y2): ");
         scanf("%s", &line);
 
         char *ptr = strtok(line, split);
@@ -63,7 +63,7 @@ int main(void)
         if (x1 == 0 && x2 == 0 && y1 == 0 && y2 == 0)
             break;
 
-        printf("\nDistance: %f\n\n", distance(x1, y1, x2, y2));
+        printf("\nA distancia entre os pontos (%f, %f) (%f, %f) e` %f\n", x1, y1, x2, y2, distance(x1, y1, x2, y2));
     }
 
     return 0;

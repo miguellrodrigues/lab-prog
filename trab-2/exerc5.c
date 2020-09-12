@@ -11,13 +11,13 @@
 void multiplos(size_t lowerBound, size_t upperBound, size_t x)
 {
     if (lowerBound > upperBound)
-        return 0;
+        printf("%d", 0);
 
     for (size_t i = lowerBound; i <= upperBound; i++)
     {
         if (i % x == 0)
         {
-            printf("%d, ", i);
+            printf("%d ", i);
         }
     }
 }

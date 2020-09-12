@@ -23,7 +23,7 @@ int main(void)
     printf("\nDigite a quantidade de combustivel gasta em litros: ");
     scanf("%f", &combustivel);
 
-    printf("\nMedia de combustivel gasto: %.3f\n", mediaCombustivel(km, combustivel));
+    printf("\nMedia de combustivel gasto: %.2f Km/Litro\n", mediaCombustivel(km, combustivel));
 
     return 0;
 }

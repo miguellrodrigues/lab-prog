@@ -104,8 +104,8 @@ int main(void)
     printf("\nNumero de vitorias do Cruzeiro: %d", data[1][0]);
     printf("\nQuantidade de gols do Cruzeiro: %d", data[1][1]);
     printf("\n");
-    printf("\nNumero de vitorias do America: %d", data[2][0]);
-    printf("\nQuantidade de gols do America: %d", data[2][1]);
+    printf("\nNumero de vitorias do America: %d",  data[2][0]);
+    printf("\nQuantidade de gols do America: %d",  data[2][1]);
     printf("\n");
     printf("\nQuantidade de empates: %d", empates);
     printf("\nTime com maior numero de vitorias: %s", getHigher());
