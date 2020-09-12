@@ -14,9 +14,9 @@ int main(void)
     printf("\nDigite um valor em reais: ");
     scanf("%d", &valor);
 
-    double notas[5] = {100, 50, 10, 5, 1};
+    size_t notas[5] = {100, 50, 10, 5, 1};
 
-    int qtd[5];
+    size_t qtd[5];
 
     for (size_t i = 0; i < 5; i++)
     {
