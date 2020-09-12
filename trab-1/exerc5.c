@@ -21,7 +21,6 @@ int main(void)
         x = y;
         y = next;
     }
-    
 
     return 0;
 }

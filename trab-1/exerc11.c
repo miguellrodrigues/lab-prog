@@ -13,7 +13,7 @@ int main(void)
     float num1, num2, result = 0;
     int operation, run = 1;
 
-    while (run)
+    do
     {
         printf("\nDigite o valor do primeiro numero: ");
         scanf("%f", &num1);
@@ -31,7 +31,7 @@ int main(void)
             printf("O divisor nao pode ser 0, digite o valor do segundo numero novamente: ");
             scanf("%f", &num2);
         }
-        
+
         result = num1;
 
         switch (operation)
@@ -55,11 +55,11 @@ int main(void)
             break;
         }
 
-        if (run == 0)
+        if (run != 1)
             break;
 
-        printf("\nResultado: %.3f", result);
-    }
+        printf("\nResultado: %.3f\n", result);
+    } while (run == 1);
 
     return 0;
 }

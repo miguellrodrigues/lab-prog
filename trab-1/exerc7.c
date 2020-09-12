@@ -11,6 +11,13 @@
 
 int data[3][2];
 
+char* getHigher()
+{
+    return (data[0][0] > data[1][0] && data[0][0] > data[2][0]) ? "Atletico" :
+           (data[1][0] > data[0][0] && data[1][0] > data[2][0]) ? "Cruzeiro" :
+           (data[2][0] > data[0][0] && data[2][0] > data[1][0]) ? "America"  : "Nenhum";
+}
+
 int main(void)
 {
     bool run = true;
@@ -101,9 +108,7 @@ int main(void)
     printf("\nQuantidade de gols do America: %d", data[2][1]);
     printf("\n");
     printf("\nQuantidade de empates: %d", empates);
-    printf("\nTime com maior numero de vitorias: %s", (data[0][1] > data[1][1] && data[0][1] > data[2][1]) ? "Atletico" :
-                                                      (data[1][1] > data[0][1] && data[1][1] > data[2][1]) ? "Cruzeiro" :
-                                                      (data[2][1] > data[0][1] && data[2][1] > data[1][1]) ? "America"  : "Nenhum");
+    printf("\nTime com maior numero de vitorias: %s", getHigher());
     printf("\n");
 
     return 0;

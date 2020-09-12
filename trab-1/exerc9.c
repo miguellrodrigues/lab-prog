@@ -21,9 +21,9 @@ int main(void)
     if (lowerBound > upperBound)
     {
         printf("Intervalo de valores invalido.");
-        return 1;
+        return -1;
     }
-    
+
     for (size_t i = lowerBound; i < upperBound; i++)
     {
         if (i % 2 != 0)
@@ -31,6 +31,6 @@ int main(void)
     }
 
     printf("\nSomatorio dos valores impares entre: %d e %d -> %d", lowerBound, upperBound, sum);
-    
+
     return 0;
 }

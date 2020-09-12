@@ -12,11 +12,11 @@ int main(void)
 {
     for (size_t i = 0; i < 200; i++)
     {
-        if (i % 4 == 0) {
+        if (i % 4 == 0)
+        {
             printf("\n%d", i);
         }
     }
-    
 
     return 0;
 }

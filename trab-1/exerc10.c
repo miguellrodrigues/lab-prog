@@ -14,6 +14,9 @@ int main(void)
     int *numbers = calloc(100, sizeof(int)), input = 0;
 
     int counter = 0;
+
+    printf("\n");
+
     while (1)
     {
         printf("Digite o valor do %d numero: ", (counter + 1));
@@ -65,7 +68,7 @@ int main(void)
     printf("\nMedia dos numeros digitados: %.3f", media);
     printf("\nO maior numero digitado: %d", higher);
     printf("\nO menor numero digitado: %d", lower);
-    printf("\nMedia dos numeros pares: %.3f", mediaPares);
+    printf("\nMedia dos numeros pares: %.3f\n", mediaPares);
 
     return 0;
 }

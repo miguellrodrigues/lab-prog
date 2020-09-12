@@ -34,7 +34,6 @@ int main(void)
             printf("\nNota invalida, digite novamente a %d nota do aluno: ", i + 1);
             scanf("%f", &notas[i]);
         }
-        
     }
 
     for (size_t j = 0; j < alunos; j++)

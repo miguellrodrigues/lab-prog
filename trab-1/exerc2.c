@@ -15,7 +15,7 @@ int main(void)
     int num = 0, counter = 0;
     while (1)
     {
-        printf("\nDigite um numero: ");
+        printf("\nDigite o valor do %d numero: ", counter + 1);
         scanf("%d", &num);
 
         if (num < 0)
