@@ -17,7 +17,7 @@ void multiplos(size_t lowerBound, size_t upperBound, size_t x)
     {
         if (i % x == 0)
         {
-            printf("%d ", i);
+            printf("%d, ", i);
         }
     }
 }
@@ -29,15 +29,17 @@ int main(void)
     printf("\nDigite o valor minimo: ");
     scanf("%d", &min);
 
-    printf("\nDigite o valor maximo: ");
+    printf("Digite o valor maximo: ");
     scanf("%d", &max);
 
     printf("\nDigite o valor de x: ");
     scanf("%d", &x);
 
-    printf("\n");
+    printf("\nMultiplos de %d entre %d e %d -> ", x, min, max);
 
     multiplos(min, max, x);
+
+    printf("\n");
 
     return 0;
 }

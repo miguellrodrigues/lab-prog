@@ -20,7 +20,7 @@ int main(void)
         counter++;
     }
 
-    printf("Anos necessarios para que a populacao de Bruzundangas alcance ou ultrapasse a populacao de Milanos: %d", counter);
+    printf("\nAnos necessarios para que a populacao de Bruzundangas alcance ou ultrapasse a populacao de Milanos: %d\n", counter);
 
     return 0;
 }

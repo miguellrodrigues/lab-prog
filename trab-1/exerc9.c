@@ -20,7 +20,7 @@ int main(void)
 
     if (lowerBound > upperBound)
     {
-        printf("Intervalo de valores invalido.");
+        printf("\nIntervalo de valores invalido.");
         return -1;
     }
 
@@ -30,7 +30,7 @@ int main(void)
             sum += i;
     }
 
-    printf("\nSomatorio dos valores impares entre: %d e %d -> %d", lowerBound, upperBound, sum);
+    printf("\nSomatorio dos valores impares entre: %d e %d -> %d\n", lowerBound, upperBound, sum);
 
     return 0;
 }

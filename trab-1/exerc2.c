@@ -35,7 +35,7 @@ int main(void)
         }
     }
 
-    printf("\nO maior numero digitado foi: %d Na posicao: %d", higher, ++pos);
+    printf("\nO maior numero digitado foi: %d Na posicao: %d\n", higher, ++pos);
 
     return 0;
 }

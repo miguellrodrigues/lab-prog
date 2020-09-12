@@ -30,7 +30,7 @@ int main(void)
 
     printf("\nTempo decorrido: %d Hr, %d Min, %d Seg", hours, minutes, seconds);
     printf("\nCiclos de meia`s vidas: %d", counter);
-    printf("\nMassa final: %.3fg", mass);
+    printf("\nMassa final: %.3fg\n", mass);
 
     return 0;
 }

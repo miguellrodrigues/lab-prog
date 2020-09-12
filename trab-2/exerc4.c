@@ -34,7 +34,7 @@ int main(void)
     printf("\nDigite o valor maximo: ");
     scanf("%d", &max);
 
-    printf("\nQuantidade de numeros impares entre: %d a %d: %d", min, max, impares(min, max));
+    printf("\nQuantidade de numeros impares entre: %d a %d -> %d\n", min, max, impares(min, max));
 
     return 0;
 }

@@ -43,7 +43,7 @@ int main(void)
 
     media /= alunos;
 
-    printf("\nMedia das notas: %.3f", media);
+    printf("\nMedia das notas: %.3f\n", media);
 
     return 0;
 }

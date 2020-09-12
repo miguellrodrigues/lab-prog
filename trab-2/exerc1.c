@@ -17,7 +17,7 @@ int main(void)
     printf("\nDigite o valor de 2 numeros reais: ");
     scanf("%f %f", &a, &b);
 
-    printf("\nA soma entra %.3f e %.3f e` %.3f\n", a, b, sum(a, b));
+    printf("\nA soma entre %.3f e %.3f e` %.3f\n", a, b, sum(a, b));
 
     return 0;
 }

@@ -26,7 +26,7 @@ int main(void)
         prev = i;
     }
 
-    printf("\nSomatorio: %f", sum);
+    printf("\nSomatorio: %f\n", sum);
 
     return 0;
 }
