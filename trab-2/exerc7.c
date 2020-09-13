@@ -18,7 +18,7 @@ int main(void)
     result = (kiloWatts * 1.46);
     result += result * 0.18;
 
-    printf("\nTotal a pagar: R$ %.3f", result);
+    printf("\nTotal a pagar: R$ %.3f\n", result);
 
     return 0;
 }

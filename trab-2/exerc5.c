@@ -35,11 +35,11 @@ int main(void)
     printf("\nDigite o valor de x: ");
     scanf("%d", &x);
 
-    printf("\nMultiplos de %d entre %d e %d -> ", x, min, max);
+    printf("\nMultiplos de %d entre %d e %d -> \n\n", x, min, max);
 
     multiplos(min, max, x);
 
-    printf("\n");
+    printf("\n\n");
 
     return 0;
 }
