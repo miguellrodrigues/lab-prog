@@ -7,11 +7,10 @@
 */
 
 #include <stdio.h>
-#include <malloc.h>
 
 int main(void)
 {
-    int *numbers = calloc(100, sizeof(int));
+    int numbers[9999];
 
     int counter  = 0,
         input    = 0;

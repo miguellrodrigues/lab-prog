@@ -22,5 +22,7 @@ int main(void)
         y = next;
     }
 
+    printf("\n");
+
     return 0;
 }
