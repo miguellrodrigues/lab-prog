@@ -15,6 +15,12 @@ int main(void)
 
     do
     {
+        printf("\nDigite a operacao: \n\nadicao (1)\nsubtracao (2)\nmultiplicacao (3)\ndivisao (4)\nsair (5)\n\n");
+        scanf("%d", &operation);
+
+        if (operation == 5)
+            break;
+
         printf("\nDigite o valor do primeiro numero: ");
         scanf("%f", &num1);
 
@@ -22,9 +28,6 @@ int main(void)
         scanf("%f", &num2);
 
         printf("\n");
-
-        printf("Digite a operacao: \n\nadicao (1)\nsubtracao (2)\nmultiplicacao (3)\ndivisao (4)\nsair (5)\n\n");
-        scanf("%d", &operation);
 
         while (operation == 4 && num2 == 0)
         {
@@ -48,17 +51,11 @@ int main(void)
         case 4:
             result /= num2;
             break;
-        case 5:
-            run = 0;
-            break;
         default:
             break;
         }
 
-        if (run != 1)
-            break;
-
-        printf("\nResultado: %.3f\n", result);
+        printf("\n\nResultado: %.3f\n", result);
     } while (run == 1);
 
     return 0;
