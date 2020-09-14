@@ -8,10 +8,7 @@
 
 #include <stdio.h>
 
-float calculoAumento(float salario, int aumento)
-{
-    return salario * (aumento / 100.0);
-}
+float calculoAumento(float salario, int aumento) { return salario * (aumento / 100.0); }
 
 int main(void)
 {
@@ -21,7 +18,7 @@ int main(void)
     printf("\nDigite o valor do salario: ");
     scanf("%f", &salario);
 
-    printf("\nDigite o valor do aumento (0 a 100): ");
+    printf("\nDigite o valor do aumento (0 a 100) porcento: ");
     scanf("%d", &aumento);
 
     novoSalario = salario + calculoAumento(salario, aumento);

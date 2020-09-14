@@ -23,7 +23,6 @@ int main(void)
             printf("Valor invalido, digite novamente o valor da %d nota: ", (i + 1));
             scanf("%f", &notas[i]);
         }
-        
     }
 
     char option;
