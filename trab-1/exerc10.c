@@ -12,8 +12,8 @@ int main(void)
 {
     int numbers[9999];
 
-    int counter  = 0,
-        input    = 0;
+    int counter = 0,
+        input = 0;
 
     printf("\n");
 
@@ -30,14 +30,14 @@ int main(void)
         counter++;
     }
 
-    size_t pares      = 0;
+    size_t pares = 0;
 
-    float  media      = 0,
-           mediaPares = 0;
+    float media = 0,
+          mediaPares = 0;
 
-    int sum           = 0,
-        higher        = numbers[0],
-        lower         = numbers[0];
+    int sum = 0,
+        higher = numbers[0],
+        lower = numbers[0];
 
     for (size_t i = 0; i < counter; i++)
     {
@@ -45,21 +45,30 @@ int main(void)
 
         sum += num;
 
-        if (num % 2 == 0) {
-           mediaPares += num;
-           ++pares;
+        if (num % 2 == 0)
+        {
+            mediaPares += num;
+            ++pares;
         }
     }
-    
-    media = (float) sum / counter;
-    mediaPares /= pares;
+
+    media = (float)sum / counter;
+
+    if (pares > 0)
+    {
+        mediaPares /= pares;
+    }
+    else
+    {
+        mediaPares = 0;
+    }
 
     for (size_t i = 0; i < counter; i++)
     {
         if (numbers[i] > higher)
             higher = numbers[i];
-        
-        if (numbers[i] < lower) 
+
+        if (numbers[i] < lower)
             lower = numbers[i];
     }
 

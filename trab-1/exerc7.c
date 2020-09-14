@@ -29,7 +29,7 @@ int main(void)
                  result       = 0,
                  counter      = 0,
                  empates      = 0;
-    for (;;)
+    while (1)
     {
         printf("\nDigite o numero de gols marcado pelo Atletico: ");
         scanf("%d", &golsAtletico);
@@ -94,7 +94,6 @@ int main(void)
     {
         printf("\n");
     }
-
     
     printf("\nQuantidade de jogos: %d", counter);
     printf("\n");
