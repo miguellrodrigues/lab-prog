@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 float distance(float x1, float y1, float x2, float y2)
 {
@@ -27,7 +28,7 @@ int main(void)
     while (1)
     {
         printf("\nDigite as coordenadas da seguinte forma: (X1,Y1,X2,Y2): ");
-        scanf("%s", &line);
+        scanf("%s", line);
 
         char *ptr = strtok(line, split);
 
