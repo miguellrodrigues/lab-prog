@@ -8,10 +8,7 @@
 
 #include <stdio.h>
 
-float mediaCombustivel(float km, float comb)
-{
-    return km / comb;
-}
+float mediaCombustivel(float km, float comb) { return km / comb; }
 
 int main(void)
 {

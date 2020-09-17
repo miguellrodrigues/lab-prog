@@ -10,7 +10,7 @@
 
 int main(void)
 {
-    int alunos = 0;
+    size_t alunos = 0;
 
     printf("\nDigite o numero de alunos: ");
     scanf("%d", &alunos);
@@ -21,24 +21,21 @@ int main(void)
         return -1;
     }
 
-    float notas[alunos], media = 0;
+    float input, media = 0;
 
     for (size_t i = 0; i < alunos; i++)
     {
         printf("\nDigite a nota do %d aluno: ", i + 1);
 
-        scanf("%f", &notas[i]);
+        scanf("%f", &input);
 
-        while (notas[i] < 0)
+        while (input < 0)
         {
             printf("\nNota invalida, digite novamente a %d nota do aluno: ", i + 1);
-            scanf("%f", &notas[i]);
+            scanf("%f", &input);
         }
-    }
 
-    for (size_t j = 0; j < alunos; j++)
-    {
-        media += notas[j];
+        media += input;
     }
 
     media /= alunos;

@@ -15,8 +15,7 @@ int main(void)
 
     size_t counter = 0;
 
-    while (1)
-    {
+    do {
         printf("\nDigite o valor do %d numero: ", (counter + 1));
         scanf("%f", &input);
 
@@ -26,7 +25,7 @@ int main(void)
         numbers[counter] = input;
 
         counter++;
-    }
+    }while (input != 0);
 
     for (size_t i = 1; i <= counter; i++)
     {

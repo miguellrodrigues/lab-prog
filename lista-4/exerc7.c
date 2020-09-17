@@ -1,6 +1,6 @@
 #include "stdio.h"
 
-float fatorial(float x)
+long double fatorial(float x)
 {
     if (x == 0)
         return 1;

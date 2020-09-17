@@ -17,7 +17,7 @@ int main(void)
 
     printf("\n");
 
-    while (1)
+    do
     {
         printf("Digite o valor do %d numero: ", (counter + 1));
         scanf("%d", &input);
@@ -28,7 +28,7 @@ int main(void)
         numbers[counter] = input;
 
         counter++;
-    }
+    } while (input != 0);
 
     size_t pares = 0;
 
