@@ -19,7 +19,7 @@ int main(void)
 
     while (i < 16384)
     {
-        i = (i + prev);
+        i += prev;
 
         sum += (i / pow(j--, 2.0));
 
