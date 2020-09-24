@@ -26,7 +26,7 @@ int main(void)
 
     unsigned int hours = floor(time / 3600);
     unsigned int minutes = floor(time - (hours * 3600)) / 60;
-    unsigned int seconds = floor(seconds % 60);
+    unsigned int seconds = floor(time % 60);
 
     printf("\nTempo decorrido: %d Hr, %d Min, %d Seg", hours, minutes, seconds);
     printf("\nCiclos de meia`s vidas: %d", counter);
