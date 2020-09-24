@@ -10,7 +10,7 @@
 
 int main(void)
 {
-    for (size_t i = 0; i < 200; i++)
+    for (unsigned int i = 0; i < 200; i++)
     {
         if (i % 4 == 0)
         {

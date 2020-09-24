@@ -15,14 +15,14 @@ int main(void)
 
     float notas[alunos], media = 0;
 
-    for (size_t i = 0; i < alunos; i++)
+    for (unsigned int i = 0; i < alunos; i++)
     {
         printf("\nDigite a nota do %d aluno: ", i + 1);
 
         scanf("%f", &notas[i]);
     }
 
-    for (size_t j = 0; j < alunos; j++)
+    for (unsigned int j = 0; j < alunos; j++)
     {
         media += notas[j];
     }

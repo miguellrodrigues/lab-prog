@@ -15,7 +15,7 @@ int main(void)
 {
     float x1, y1, x2, y2;
 
-    size_t counter = 0;
+    unsigned int counter = 0;
 
     do {
         printf("\nDigite as coordenadas da seguinte forma: (X1,Y1,X2,Y2): ");

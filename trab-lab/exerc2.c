@@ -22,7 +22,7 @@ int main(void)
     } while (num >= 0);
 
     int higher = 0, pos = 0;
-    for (size_t i = 0; i < counter; i++)
+    for (unsigned int i = 0; i < counter; i++)
     {
         if (numbers[i] > higher)
         {

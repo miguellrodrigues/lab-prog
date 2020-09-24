@@ -12,9 +12,9 @@ int main(void)
 {
     printf("\n");
 
-    size_t x = 0;
+    unsigned int x = 0;
 
-    for (size_t i = 1000; i <= 1999; i++)
+    for (unsigned int i = 1000; i <= 1999; i++)
     {
         if (i % 11 == 5)
         {

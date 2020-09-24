@@ -7,16 +7,16 @@ int main()
 {
     srand(time(NULL));
 
-    for (size_t i = 0; i < 10; i++)
+    for (unsigned int i = 0; i < 10; i++)
     {
         bois[i][0] = (rand() % 1000) + 1;
         bois[i][1] = (rand() % 300) + 150;
     }
 
     int troca = 0;
-    for (size_t i = 0; i < 10; i++)
+    for (unsigned int i = 0; i < 10; i++)
     {
-        for (size_t j = i + 1; j < 10; j++)
+        for (unsigned int j = i + 1; j < 10; j++)
         {
             if (bois[i][1] > bois[j][1])
             {

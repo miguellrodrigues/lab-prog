@@ -30,7 +30,7 @@ int main(void)
         counter++;
     } while (input != 0);
 
-    size_t pares = 0;
+    unsigned int pares = 0;
 
     float media = 0,
           mediaPares = 0;
@@ -39,7 +39,7 @@ int main(void)
         higher = numbers[0],
         lower = numbers[0];
 
-    for (size_t i = 0; i < counter; i++)
+    for (unsigned int i = 0; i < counter; i++)
     {
         int num = numbers[i];
 
@@ -63,7 +63,7 @@ int main(void)
         mediaPares = 0;
     }
 
-    for (size_t i = 0; i < counter; i++)
+    for (unsigned int i = 0; i < counter; i++)
     {
         if (numbers[i] > higher)
             higher = numbers[i];

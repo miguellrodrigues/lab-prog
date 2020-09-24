@@ -18,8 +18,8 @@ int main(void)
 
     n++;
 
-    size_t j = 0;
-    for (size_t i = 100; i > 100 - n; i--)
+    unsigned int j = 0;
+    for (unsigned int i = 100; i > 100 - n; i--)
     {
         sum += i / fatorial(j++);
     }

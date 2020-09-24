@@ -70,7 +70,7 @@ int main(void)
         printf("\nDeseja iniciar um novo duelo ? (sim ou nao) ");
         scanf("%s", &message);
 
-        for (size_t i = 0; i < 3; i++)
+        for (unsigned int i = 0; i < 3; i++)
         {
             if (message[i] != yes[i])
             {
@@ -82,7 +82,7 @@ int main(void)
             break;
     }
 
-    for (size_t i = 0; i < 100; i++)
+    for (unsigned int i = 0; i < 100; i++)
     {
         printf("\n");
     }

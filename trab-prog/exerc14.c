@@ -13,9 +13,9 @@ int main(void)
 {
     float sum = 0, j = 15;
 
-    size_t prev = 1;
+    unsigned int prev = 1;
 
-    size_t i = 0;
+    unsigned int i = 0;
 
     while (i < 16384)
     {

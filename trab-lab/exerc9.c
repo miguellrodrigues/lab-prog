@@ -24,7 +24,7 @@ int main(void)
         return -1;
     }
 
-    for (size_t i = lowerBound; i <= upperBound; i++)
+    for (unsigned int i = lowerBound; i <= upperBound; i++)
     {
         if (i % 2 != 0)
             sum += i;

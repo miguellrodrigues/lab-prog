@@ -8,12 +8,12 @@
 
 #include <stdio.h>
 
-void multiplos(size_t lowerBound, size_t upperBound, size_t x)
+void multiplos(unsigned int lowerBound, unsigned int upperBound, unsigned int x)
 {
     if (lowerBound > upperBound)
         printf("%d", lowerBound % x == 0 ? lowerBound : 0);
 
-    for (size_t i = lowerBound; i <= upperBound; i++)
+    for (unsigned int i = lowerBound; i <= upperBound; i++)
     {
         if (i % x == 0)
         {
@@ -24,7 +24,7 @@ void multiplos(size_t lowerBound, size_t upperBound, size_t x)
 
 int main(void)
 {
-    size_t min, max, x;
+    unsigned int min, max, x;
 
     printf("\nDigite o valor minimo: ");
     scanf("%d", &min);

@@ -13,7 +13,7 @@ int main(void)
 {
     float numbers[9999], input, media = 0, dp = 0;
 
-    size_t counter = 0;
+    unsigned int counter = 0;
 
     do {
         printf("\nDigite o valor do %d numero: ", (counter + 1));
@@ -27,14 +27,14 @@ int main(void)
         counter++;
     }while (input != 0);
 
-    for (size_t i = 1; i <= counter; i++)
+    for (unsigned int i = 1; i <= counter; i++)
     {
         media += numbers[i - 1];
     }
 
     media /= counter;
 
-    for (size_t i = 0; i < counter; i++)
+    for (unsigned int i = 0; i < counter; i++)
     {
         dp += pow((numbers[i] - media), 2.0) / counter;
     }

@@ -10,7 +10,7 @@
 
 int main(void)
 {
-    size_t alunos = 0;
+    unsigned int alunos = 0;
 
     printf("\nDigite o numero de alunos: ");
     scanf("%d", &alunos);
@@ -23,7 +23,7 @@ int main(void)
 
     float input, media = 0;
 
-    for (size_t i = 0; i < alunos; i++)
+    for (unsigned int i = 0; i < alunos; i++)
     {
         printf("\nDigite a nota do %d aluno: ", i + 1);
 
