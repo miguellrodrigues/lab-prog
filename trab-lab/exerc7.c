@@ -107,26 +107,6 @@ int main(void)
 
         printf("\n");
 
-<<<<<<< HEAD
-        printf("\nDeseja iniciar um novo duelo ? (sim ou nao) ");
-        scanf("%s", &message);
-
-        for (unsigned int i = 0; i < 3; i++)
-        {
-            if (message[i] != yes[i])
-            {
-                run = false;
-            }
-        }
-
-        counter++;
-
-        if (!run)
-            break;
-    }
-
-    for (unsigned int i = 0; i < 100; i++)
-=======
         printf("\nDeseja iniciar um novo duelo ? 1 (sim) ou 0 (nao) ");
         scanf("%d", &exit);
 
@@ -135,7 +115,6 @@ int main(void)
     } while (exit);
     
     for (size_t i = 0; i < 100; i++)
->>>>>>> 57c6787bc1b56eb022bcbafc7af2e95de4b2dc6f
     {
         printf("\n");
     }
