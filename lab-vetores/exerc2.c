@@ -1,20 +1,21 @@
 #include <stdio.h>
-#include <math.h>
+#include <stdlib.h>
 
 int main(void)
 {
+    srand(time(NULL));
+
     unsigned int a[15];
 
     for (size_t i = 0; i < 15; i++)
     {
-        a[i] = i * pow(2, i);
+        a[i] = (rand() % 100) + 1;
     }
 
     for (size_t i = 0; i < 15; i++)
     {
-        printf("\n%d %d", a[i], i);
+        printf("\nPos: %d | Val: %d", i, a[i]);
     }
-    
 
     unsigned int higher = a[0], lower = a[0], posHigher, posLower;
 
@@ -33,7 +34,7 @@ int main(void)
         }
     }
 
-    printf("\nMaior elemtno: %d posicao: %d", higher, posHigher);
+    printf("\n\nMaior elemetno: %d posicao: %d", higher, posHigher);
     printf("\nMenor elemento: %d posicao: %d", lower, posLower);
 
     return 0;
