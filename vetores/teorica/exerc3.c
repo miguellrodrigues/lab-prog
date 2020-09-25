@@ -22,10 +22,6 @@ int main(void)
 
     for (size_t i = 0; i < 15; i++)
     {
-        /*float x = (float) a[i] / higher;   //TODO: Nao ficou claro se era pra 
-        printf("\nPos: %d | Val: %d", i, x);         fazer assim ou com divisao inteira
-        */
-
         a[i] /= higher;
 
         printf("\nPos: %d | Val: %d", i, a[i]);
