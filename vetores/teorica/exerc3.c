@@ -1,5 +1,10 @@
 #include <stdio.h>
 
+/*
+    Faça um programa que leia um vetor de 15 posições de números inteiros e divida
+    todos os seus elementos pelo maior valor do vetor. Mostre o vetor após os cálculos.
+*/
+
 int main(void)
 {
     int a[15], higher = 0;

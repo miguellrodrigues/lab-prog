@@ -1,6 +1,14 @@
 #include <stdio.h>
 #include <math.h>
 
+/*
+    Escrever um programa que leia a dimensão e os elementos de um vetor, um de cada
+    vez. O programa determina quantos elementos são positivos, nulos e negativos, e
+    imprime essas informações. Para os elementos positivos, é calculado o valor da
+    função f(x) = 2x – cos(x) para esses elementos. Deve ser impresso o valor do elemento
+    positivo e o valor da função.
+*/
+
 int main(void)
 {
     unsigned int n;

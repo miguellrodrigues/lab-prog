@@ -1,13 +1,22 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+/*
+    Faça um programa que carregue dois vetores de dez posições cada um. Calcule e
+    mostre um terceiro vetor que contenha os elementos dos dois vetores anteriores
+    ordenados de maneira decrescente.
+*/
 
 int main(void)
 {
+    srand(time(NULL));
+
     int a[10], b[10], c[20];
 
     for (size_t i = 0; i < 10; i++)
     {
-        a[i] = i + 2;
-        b[i] = i + 4;
+        a[i] = (rand() % 100) + 1;
+        b[i] = (rand() % 100) + 1;
     }
 
     for (size_t i = 0; i < 10; i++)

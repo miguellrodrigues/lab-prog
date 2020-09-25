@@ -1,23 +1,21 @@
 #include <stdio.h>
 
+/*
+    Faça um programa que leia um vetor inteiro de 30 posições e crie um segundo vetor,
+    substituindo os valores zeros por 1. Mostre os dois vetores
+*/
+
 int main(void)
 {
     int a[30], b[30];
 
     for (size_t i = 0; i < 30; i++)
     {
-        a[i] = 0;
-        b[i] = 0;
-    }
-    
-    
-    for (size_t i = 0; i < 30; i++)
-    {
         printf("Digite o valor do %d elemento: ", i + 1);
         scanf("%d", &a[i]);
     }
     
-    for (int i = 29; i > 0; i--)
+    for (int i = 29; i > -1; i--)
     {
         int x = a[i];
 

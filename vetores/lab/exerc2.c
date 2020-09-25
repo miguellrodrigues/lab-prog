@@ -1,6 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*
+    Faça um programa que carregue um vetor com 15 posições, calcule e mostre:
+    
+    a. o maior elemento do vetor e em que posição esse elemento se encontra:
+    b. o menor elemento do vetor e em que posição esse elemento se encontra.
+*/
+
 int main(void)
 {
     srand(time(NULL));
@@ -14,10 +21,10 @@ int main(void)
 
     for (size_t i = 0; i < 15; i++)
     {
-        printf("\nPos: %d | Val: %d", i, a[i]);
+        printf("\nPos: %d | Val: %d", i + 1, a[i]);
     }
 
-    unsigned int higher = a[0], lower = a[0], posHigher, posLower;
+    unsigned int higher = a[0], lower = a[0], posHigher = 0, posLower = 0;
 
     for (size_t i = 0; i < 15; i++)
     {
@@ -34,8 +41,8 @@ int main(void)
         }
     }
 
-    printf("\n\nMaior elemetno: %d posicao: %d", higher, posHigher);
-    printf("\nMenor elemento: %d posicao: %d", lower, posLower);
+    printf("\n\nMaior elemento: %d posicao: %d", higher, ++posHigher);
+    printf("\nMenor elemento: %d posicao: %d\n", lower, ++posLower);
 
     return 0;
 }

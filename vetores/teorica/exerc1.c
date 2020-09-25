@@ -1,5 +1,11 @@
 #include <stdio.h>
 
+/*
+    Faça um programa que leia um vetor de dez posições. Em seguida, compacte o vetor,
+    retirando os valores nulos e negativos. Coloque o resultado no vetor B, mostrando o
+    vetor resultante.  
+*/
+
 int main(void)
 {
     int a[10], b[10];
@@ -20,7 +26,7 @@ int main(void)
 
     for (size_t i = 0; i < count; i++)
     {
-        printf("\nPos: %d | Val: %d", i, b[i]);
+        printf("\nPos: %d | Val: %d", i + 1, b[i]);
     }
     
     printf("\n");
