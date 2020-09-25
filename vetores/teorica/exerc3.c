@@ -24,7 +24,7 @@ int main(void)
     {
         a[i] /= higher;
 
-        printf("\nPos: %d | Val: %d", i, a[i]);
+        printf("\nPos: %d | Val: %d", i + 1, a[i]);
     }
 
     return 0;

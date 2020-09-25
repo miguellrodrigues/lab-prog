@@ -10,10 +10,12 @@
 
 int main(void)
 {
-    unsigned int n;
+    unsigned int n, x;
 
     printf("\nDigite a dimensao do array: ");
     scanf("%d", &n);
+
+    x = n;
 
     printf("\n");
 
@@ -24,10 +26,13 @@ int main(void)
         printf("Digite o valor do %d elemento: ", i + 1);
         scanf("%f", &a[i]);
 
-        media += a[i];
+        if (a[i] != 0)
+            media += a[i];
+        else
+            x--;
     }
 
-    media /= n;
+    media /= x;
 
     unsigned int minor = 0;
     for (size_t i = 0; i < n; i++)
@@ -36,7 +41,7 @@ int main(void)
         {
             minor++;
 
-            printf("\nPos: %d | Val: %.3f", i, a[i]);
+            printf("\nPos: %d | Val: %.3f", i + 1, a[i]);
         }
     }
 

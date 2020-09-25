@@ -23,7 +23,9 @@ int main(void)
     
     for (int i = 0; i < 5; i++)
     {
-        printf("\n%d - %d = %d", a[i], b[4 - i], a[i] - b[4 - i]);
+        int bx = b[4 - i];
+
+        printf("\n%d - %d = %d", a[i], bx, a[i] - bx);
     }
     
     printf("\n");

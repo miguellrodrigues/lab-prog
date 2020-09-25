@@ -30,7 +30,7 @@ int main(void)
     {
         key = c[i];
 
-        int j = (int)i - 1;
+        int j = i - 1;
 
         while (j >= 0 && c[j] < key)
         {
