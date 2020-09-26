@@ -30,11 +30,9 @@ int main(void)
 
     unsigned int inputCode = 0, running = 1;
 
-    printf("\n");
-
     for (size_t i = 0; i < 10; i++)
     {
-        printf("Digite o codigo da %d conta: ", i + 1);
+        printf("\nDigite o codigo da %d conta: ", i + 1);
         scanf("%d", &inputCode);
 
         while (inArray(inputCode, accounts, 10))
@@ -44,6 +42,9 @@ int main(void)
         }
 
         accounts[i] = inputCode;
+
+        printf("Digite o saldo da %d conta: ", i + 1);
+        scanf("%f", &balance[i]);
     }
 
     system("cls");
@@ -62,7 +63,7 @@ int main(void)
             printf("4 - Sair\n\n");
 
             scanf("%d", &option);
-        } while (option != 1 && option != 2 && option != 3 && option != 4);
+        } while (option < 1 || option > 4);
 
         if (option == 4)
             break;
@@ -76,10 +77,10 @@ int main(void)
             scanf("%d", &selectedAccount);
         }
 
-        ps = pos(selectedAccount, accounts, 10); 
+        ps = pos(selectedAccount, accounts, 10);
 
         system("cls");
-        
+
         switch (option)
         {
         case 1:
@@ -95,15 +96,15 @@ int main(void)
                 printf("\nValor invalido, utilize valores maiores que 0");
                 scanf("%f", &deposit);
             }
-            
+
             balance[ps] += deposit;
 
             printf("\nNovo saldo: %.3f", balance[ps]);
 
             break;
 
-        case 3: 
-            printf("\nDigite o valor a ser sacado: ");
+        case 3:
+            printf("\nDigite o valor a ser sacado: (%.3f disponiveis) ", balance[ps]);
             scanf("%f", &withdraw);
 
             while (balance[ps] - withdraw < 0)
@@ -125,6 +126,17 @@ int main(void)
         printf("\n");
 
     } while (running);
+
+    system("cls");
+
+    float sum = 0;
+
+    for (size_t i = 1; i <= 10; i++)
+    {
+        sum += balance[i - 1];
+    }
+
+    printf("\nAtivo bancario: %.3f\n", sum);
 
     return 0;
 }
