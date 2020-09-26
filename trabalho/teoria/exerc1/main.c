@@ -2,7 +2,7 @@
 
 int main(void)
 {
-    char clients [8][16];
+    char clients  [8][16];
 
     int pizzas    [8];
     int freePizzas[8];
