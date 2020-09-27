@@ -37,7 +37,7 @@ void showMap()
                 {
                     if (i == 2)
                         printf("            ");
-                    else   
+                    else
                         printf("             ");
                 }
                 else
@@ -120,24 +120,16 @@ int main(void)
 
                 unsigned int x = (line * 4);
 
-                for (size_t i = 0; i < 4; i++)
+                unsigned int column = (poltrona - x) - 1;
+
+                if (poltronas[line][column] == 0)
                 {
-                    if (++x == poltrona)
-                    {
-                        unsigned int column = poltrona - (line * 4) - 1;
-
-                        if (poltronas[line][column] == 0)
-                        {
-                            printf("\nVenda efetivada !");
-                            poltronas[line][column] = 1;
-                        }
-                        else
-                        {
-                            printf("\nPoltrona ocupada !");
-                        }
-
-                        break;
-                    }
+                    printf("\nVenda efetivada !");
+                    poltronas[line][column] = 1;
+                }
+                else
+                {
+                    printf("\nPoltrona ocupada !");
                 }
             }
             break;
