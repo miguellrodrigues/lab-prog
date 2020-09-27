@@ -93,7 +93,7 @@ int main(void)
 
             while (deposit <= 0)
             {
-                printf("\nValor invalido, utilize valores maiores que 0");
+                printf("\nValor invalido, utilize valores maiores que 0: ");
                 scanf("%f", &deposit);
             }
 
