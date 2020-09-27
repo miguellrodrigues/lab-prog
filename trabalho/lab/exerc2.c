@@ -3,7 +3,7 @@
 
 unsigned int poltronas[12][4] = {{0}};
 
-unsigned int showMap()
+void showMap()
 {
     printf("LADO ESQUERDO                 LADO DIREITO\n");
     printf("-------------------           -------------------\n");
