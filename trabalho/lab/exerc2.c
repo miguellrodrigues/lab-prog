@@ -113,16 +113,10 @@ int main(void)
                     scanf("%d", &poltrona);
                 }
 
-                unsigned int line = 0;
+                unsigned int line = poltrona / 4;
 
                 if (poltrona % 4 == 0)
-                {
-                    line = (poltrona / 4) - 1;
-                }
-                else
-                {
-                    line = poltrona / 4;
-                }
+                    line--;
 
                 unsigned int x = (line * 4);
 
