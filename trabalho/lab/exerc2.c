@@ -73,7 +73,9 @@ unsigned int empty()
 
 int main(void)
 {
-    unsigned int running = 1, option = 0, poltrona = 0;
+    unsigned int running  = 1,
+                 option   = 0,
+                 poltrona = 0;
     
     printf("\n");
 
@@ -111,12 +113,12 @@ int main(void)
                     scanf("%d", &poltrona);
                 }
 
-                unsigned int line = poltrona / 4;
+                unsigned int line   = poltrona / 4;
 
                 if (poltrona % 4 == 0)
                     line--;
 
-                unsigned int x = (line * 4);
+                unsigned int x      = (line * 4);
 
                 unsigned int column = (poltrona - x) - 1;
 

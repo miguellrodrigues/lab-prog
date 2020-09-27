@@ -26,9 +26,10 @@ unsigned int pos(unsigned int val, unsigned int *array, unsigned int m)
 int main(void)
 {
     unsigned int accounts[10];
-    float balance[10];
+    float        balance [10];
 
-    unsigned int inputCode = 0, running = 1;
+    unsigned int inputCode = 0,
+                 running   = 1;
 
     for (size_t i = 0; i < 10; i++)
     {
