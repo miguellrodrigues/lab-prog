@@ -50,7 +50,7 @@ int main(void)
     system("cls");
 
     unsigned int option = 0, selectedAccount = 0, ps = 0;
-    float deposit, withdraw;
+    float deposit = 0.f, withdraw = 0.f;
 
     do
     {
