@@ -5,10 +5,10 @@ unsigned int poltronas[12][4] = {{0}};
 
 unsigned int showMap()
 {
-    printf("LADO ESQUERDO                LADO DIREITO\n");
-    printf("-------------------          -------------------\n");
-    printf("JANELA     CORREDOR          CORREDOR     JANELA\n");
-    printf("-------------------          -------------------\n");
+    printf("LADO ESQUERDO                 LADO DIREITO\n");
+    printf("-------------------           -------------------\n");
+    printf("JANELA     CORREDOR           CORREDOR     JANELA\n");
+    printf("-------------------           -------------------\n");
 
     size_t c = 0, x = 0;
     for (size_t i = 0; i < 12; i++)
@@ -33,11 +33,21 @@ unsigned int showMap()
             }
             else if (c == 2)
             {
-                printf("              ");
+                if (i < 3)
+                {
+                    if (i == 2)
+                        printf("            ");
+                    else   
+                        printf("             ");
+                }
+                else
+                {
+                    printf("           ");
+                }
             }
             else
             {
-                printf(" ");
+                printf("   ");
             }
         }
     }
@@ -103,18 +113,17 @@ int main(void)
                     scanf("%d", &poltrona);
                 }
 
-                printf("\nPol: %d", poltrona);
-
                 unsigned int line = 0;
 
                 if (poltrona % 4 == 0)
                 {
                     line = (poltrona / 4) - 1;
-                } else
+                }
+                else
                 {
                     line = poltrona / 4;
                 }
-              
+
                 unsigned int x = (line * 4);
 
                 for (size_t i = 0; i < 4; i++)
