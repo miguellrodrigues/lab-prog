@@ -74,9 +74,7 @@ unsigned int empty()
 int main(void)
 {
     unsigned int running = 1, option = 0, poltrona = 0;
-
-    poltronas[6][0] = 0;
-
+    
     printf("\n");
 
     while (running)
