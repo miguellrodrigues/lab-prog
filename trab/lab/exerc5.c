@@ -12,7 +12,7 @@ int main(void)
 {
     int x = 0, y = 1, next = 0;
 
-    for (unsigned int i = 0; i < 15; i++)
+    for (unsigned int i = 1; i < 15; i++)
     {
         next = x + y;
 
