@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 unsigned int poltronas[12][4] = {{0}};
 
@@ -62,21 +63,83 @@ unsigned int empty()
 
 int main(void)
 {
-    unsigned int running = 1, option = 0;
+    unsigned int running = 1, option = 0, poltrona;
+
+    poltronas[6][0] = 0;
+
+    printf("\n");
 
     while (running)
     {
         do
         {
-            printf("\nSelecione uma opcao: ");
+            printf("\nSelecione uma opcao: \n");
             printf("\n1 - Vender passagem");
             printf("\n2 - Mostrar quantidade de lugares livres");
-            printf("\n3 - Mostrar mapa de ocupacao do onibus"); 
-            printf("\n4 - Encerrar");     
+            printf("\n3 - Mostrar mapa de ocupacao do onibus");
+            printf("\n4 - Encerrar\n\n");
+
+            scanf("%d", &option);
         } while (option < 1 || option > 4);
 
-        
-    }   
+        if (option == 4)
+            break;
+
+        switch (option)
+        {
+        case 1:
+            if (empty() == 0)
+            {
+                printf("\nOnibus lotado !");
+            }
+            else
+            {
+                printf("\nDigite o numero da poltrona desejada: (1 a 48) ");
+                scanf("%d", &poltrona);
+
+                while (poltrona < 1 || poltrona > 48)
+                {
+                    printf("\nPoltrona invalida, digite um valor valido: ");
+                    scanf("%d", &poltrona);
+                }
+
+                unsigned int line = poltrona / 4;
+                unsigned int x = (line * 4);
+
+                for (size_t i = 0; i < 4; i++)
+                {
+                    if (x++ == poltrona)
+                    {
+                        unsigned int column = poltrona - (line * 4) - 1;
+
+                        if (poltronas[line][column] == 0)
+                        {
+                            printf("\nVenda efetivada !");
+                            poltronas[line][column] = 1;
+                        }
+                        else
+                        {
+                            printf("\nPoltrona ocupada !");
+                        }
+
+                        break;
+                    }
+                }
+            }
+            break;
+        case 2:
+            printf("\nQuantidade de lugares livres: %d", empty());
+            break;
+        case 3:
+            system("cls");
+            showMap();
+            break;
+        default:
+            break;
+        }
+
+        printf("\n");
+    }
 
     return 0;
 }
