@@ -63,7 +63,7 @@ unsigned int empty()
 
 int main(void)
 {
-    unsigned int running = 1, option = 0, poltrona;
+    unsigned int running = 1, option = 0, poltrona = 0;
 
     poltronas[6][0] = 0;
 
@@ -103,12 +103,23 @@ int main(void)
                     scanf("%d", &poltrona);
                 }
 
-                unsigned int line = poltrona / 4;
+                printf("\nPol: %d", poltrona);
+
+                unsigned int line = 0;
+
+                if (poltrona % 4 == 0)
+                {
+                    line = (poltrona / 4) - 1;
+                } else
+                {
+                    line = poltrona / 4;
+                }
+              
                 unsigned int x = (line * 4);
 
                 for (size_t i = 0; i < 4; i++)
                 {
-                    if (x++ == poltrona)
+                    if (++x == poltrona)
                     {
                         unsigned int column = poltrona - (line * 4) - 1;
 
