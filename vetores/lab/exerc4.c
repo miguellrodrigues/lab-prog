@@ -20,7 +20,7 @@ int main(void)
     printf("Digite a dimensao do vetor (x > 2): ");
     scanf("%d", &n);
 
-    while (n < 2)
+    while (n <= 2)
     {
         printf("Digite a dimensao do vetor (x > 2): ");
         scanf("%d", &n);
