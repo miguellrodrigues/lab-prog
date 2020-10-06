@@ -10,7 +10,7 @@
 
 int main(void)
 {
-    int a[5], b[5];
+    int a[5], b[5], sum = 0;
 
     for (size_t i = 0; i < 5; i++)
     {
@@ -26,7 +26,11 @@ int main(void)
         int bx = b[4 - i];
 
         printf("\n%d - %d = %d", a[i], bx, a[i] - bx);
+
+        sum += a[i] - bx;
     }
+
+    printf("\n\nSoma = %d", sum);
     
     printf("\n");
 

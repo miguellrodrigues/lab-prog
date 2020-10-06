@@ -5,6 +5,8 @@
     todos os seus elementos pelo maior valor do vetor. Mostre o vetor após os cálculos.
 */
 
+#include <math.h>
+
 int main(void)
 {
     int a[15], higher = 0;

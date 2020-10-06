@@ -10,13 +10,11 @@
 
 int main(void)
 {
-    unsigned int n, x;
+    unsigned int n;
 
     printf("\nDigite a dimensao do array: ");
     scanf("%d", &n);
-
-    x = n;
-
+    
     printf("\n");
 
     float a[n], media = 0;
@@ -26,13 +24,10 @@ int main(void)
         printf("Digite o valor do %d elemento: ", i + 1);
         scanf("%f", &a[i]);
 
-        if (a[i] != 0)
-            media += a[i];
-        else
-            x--;
+        media += a[i];
     }
 
-    media /= x;
+    media /= n;
 
     unsigned int minor = 0;
     for (size_t i = 0; i < n; i++)

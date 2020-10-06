@@ -11,7 +11,7 @@
 
 int main(void)
 {
-    unsigned int n;
+    unsigned int n, nl = 0, p = 0, ng = 0;
 
     printf("\nDigite a dimensao do array: ");
     scanf("%d", &n);
@@ -26,15 +26,29 @@ int main(void)
 
     for (size_t i = 0; i < n; i++)
     {
-        double x = a[i];
+        float x = a[i];
 
         if (x > 0)
         {
             float fx = (2 * x) - cos(x);
 
             printf("\nValor: %.3f | V. Funcao: %.3f", x, fx);
+
+            p++;
+        }
+        else if (x < 0)
+        {
+            ng++;
+        }
+        else
+        {
+            nl++;
         }
     }
+
+    printf("\n\nQuantidade de elementos positivos: %d", p);
+    printf("\nQuantidade de elementos negativos: %d", ng);
+    printf("\nQuantidade de elementos nulos: %d", nl);
 
     printf("\n");
 
