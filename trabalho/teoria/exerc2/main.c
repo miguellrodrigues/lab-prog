@@ -6,9 +6,9 @@ int main(void)
     char feedback[8];
 
     int studentsIds[12];
-    char answers[12][8];
+    char answers   [12][8];
 
-    int score[12][1];
+    int score      [12][1];
 
     int approved = 0;
 
@@ -55,7 +55,7 @@ int main(void)
         printf("\nMatricula: %d | Nota final: %d", studentsIds[i], score[i][0]);
     }
 
-    printf("\n\nTaxa de aprovacao: %.3f\n", (float)approved / 12);
+    printf("\n\nTaxa de aprovacao: %.3f porcento\n", (float) (approved / 12.0) * 100.0);
 
     return 0;
 }
