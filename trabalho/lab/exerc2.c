@@ -5,78 +5,118 @@ unsigned int poltronas[12][4] = {{0}};
 
 void showMap()
 {
-    printf("LADO ESQUERDO                 LADO DIREITO\n");
-    printf("-------------------           -------------------\n");
-    printf("JANELA     CORREDOR           CORREDOR     JANELA\n");
-    printf("-------------------           -------------------\n");
+    printf("LADO ESQUERDO                           LADO DIREITO\n");
+    printf("------------------------               ----------------------\n");
+    printf("JANELA         CORREDOR                 CORREDOR     JANELA\n");
+    printf("------------------------               ----------------------\n");
 
-    size_t c = 0, x = 0;
+    size_t x = 0;
     for (size_t i = 0; i < 12; i++)
     {
         for (size_t j = 0; j < 4; j++)
         {
+            x++;
+
             if (poltronas[i][j] == 0)
             {
-                printf("%d.Livre", ++x);
+                printf("%d.Livre", x);
             }
             else
             {
-                printf("%d.Ocupado", ++x);
+                printf("%d.Ocupado", x);
             }
 
-            c++;
-
-            if (c == 4)
-            {
-                printf("\n");
-                c = 0;
-            }
-            else if (c == 2)
+            if (j == 1)
             {
                 if (i < 3)
                 {
                     if (i == 2)
-                        printf("            ");
+                    {
+                        if (poltronas[i][j] == 0)
+                        {
+                            printf("                 ");
+                        }
+                        else
+                        {
+                            printf("               ");
+                        }
+                    }
                     else
-                        printf("             ");
+                    {
+                        if (poltronas[i][j] == 0)
+                        {
+                            printf("                  ");
+                        }
+                        else
+                        {
+                            printf("                ");
+                        }
+                    }
                 }
                 else
                 {
-                    printf("           ");
+                    if (poltronas[i][j] == 0)
+                    {
+                        printf("                 ");
+                    }
+                    else
+                    {
+                        printf("               ");
+                    }
                 }
             }
             else
             {
-                printf("   ");
+                if (i < 3)
+                {
+                    if (i == 2 && x == 11)
+                    {
+                        if (poltronas[i][j] == 0)
+                        {
+                            printf("       ");
+                        }
+                        else
+                        {
+                            printf("     ");
+                        }
+                    }
+                    else
+                    {
+                        if (poltronas[i][j] == 0)
+                        {
+                            printf("        ");
+                        }
+                        else
+                        {
+                            printf("      ");
+                        }
+                    }
+                }
+                else
+                {
+                    if (poltronas[i][j] == 0)
+                    {
+                        printf("       ");
+                    }
+                    else
+                    {
+                        printf("     ");
+                    }
+                }
             }
         }
+
+        printf("\n");
     }
-}
-
-unsigned int empty()
-{
-    unsigned int x = 0;
-
-    for (size_t i = 0; i < 12; i++)
-    {
-        for (size_t j = 0; j < 4; j++)
-        {
-            if (poltronas[i][j] == 0)
-            {
-                x++;
-            }
-        }
-    }
-
-    return x;
 }
 
 int main(void)
 {
-    unsigned int running  = 1,
-                 option   = 0,
-                 poltrona = 0;
-    
+    unsigned int running = 1,
+                 option = 0,
+                 poltrona = 0,
+                 empty = 48;
+
     printf("\n");
 
     while (running)
@@ -95,10 +135,12 @@ int main(void)
         if (option == 4)
             break;
 
+        system("cls");
+
         switch (option)
         {
         case 1:
-            if (empty() == 0)
+            if (empty == 0)
             {
                 printf("\nOnibus lotado !");
             }
@@ -113,12 +155,14 @@ int main(void)
                     scanf("%d", &poltrona);
                 }
 
-                unsigned int line   = poltrona / 4;
+                system("cls");
+
+                unsigned int line = poltrona / 4;
 
                 if (poltrona % 4 == 0)
                     line--;
 
-                unsigned int x      = (line * 4);
+                unsigned int x = (line * 4);
 
                 unsigned int column = (poltrona - x) - 1;
 
@@ -126,6 +170,8 @@ int main(void)
                 {
                     printf("\nVenda efetivada !");
                     poltronas[line][column] = 1;
+
+                    empty--;
                 }
                 else
                 {
@@ -134,10 +180,9 @@ int main(void)
             }
             break;
         case 2:
-            printf("\nQuantidade de lugares livres: %d", empty());
+            printf("\nQuantidade de lugares livres: %d", empty);
             break;
         case 3:
-            system("cls");
             showMap();
             break;
         default:
