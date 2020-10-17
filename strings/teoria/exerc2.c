@@ -15,7 +15,7 @@ int main(void)
 
     if (x < 0)
     {
-        printf("\n\nNenhuma ocorrencia encontrada");
+        printf("\nNenhuma ocorrencia encontrada\n");
     }
     else if (x == 0)
     {
@@ -51,19 +51,7 @@ int main(void)
     return 0;
 }
 
-int strpos(char *str, char *find, int offset)
-{
-    char stack[strlen(str)];
-    strncpy(stack, str + offset, strlen(str) - offset);
-
-    char *p = strstr(stack, find);
-    if (p)
-        return p - stack + offset;
-
-    return -1;
-}
-
-substr(char dest[], char src[], int offset, int len)
+void substr(char dest[], char src[], int offset, int len)
 {
     size_t i;
 
@@ -75,7 +63,7 @@ substr(char dest[], char src[], int offset, int len)
     dest[i] = '\0';
 }
 
-changeString(char str[], size_t end)
+void changeString(char str[], size_t end)
 {
     char c[256], d[256];
 
