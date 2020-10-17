@@ -32,15 +32,13 @@ int main(void)
             {
                 size_t a = i + 7, b = 0;
 
-                printf("\ni = %d", i);
-
                 for (size_t j = i; j < a; j++)
                 {
                     if (str[j] == keyboard[j - i])
                     {
                         if (b++ == 6)
                         {
-                            changeString(str, ++j);
+                            changeString(str, j + 1);
                         }
                     }
                 }
