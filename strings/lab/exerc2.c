@@ -1,97 +1,40 @@
 #include <stdio.h>
 #include <string.h>
-#include <malloc.h>
+#include <ctype.h>
 
 int main(void)
 {
-    char str[256], keyboard[7] = "TECLADO";
+    char str[256];
 
-    fflush(stdin);
-
-    printf("\nDigite uma frase: ");
+    printf("\nDigite uma palavra: ");
     gets(str);
 
-    int x = strlen(str) - 7;
+    size_t len = strlen(str), count = 0;
 
-    if (x < 0)
+    for (size_t i = 0; i < len; i++)
     {
-        printf("\n\nNenhuma ocorrencia encontrada");
+        if (str[i] != '\0')
+            count++;
     }
-    else if (x == 0)
+
+    char inverse[count];
+
+    for (size_t i = 0; i < count; i++)
     {
-        if (strcmp(str, "TECLADO") == 0)
-        {
-            printf("\n\nTECLADO OU MOUSE\n");
-        }
+        str[i] = tolower(str[i]);
+    }
+
+    strcpy(inverse, str);
+    strrev(inverse);
+
+    if (strcmp(inverse, str) == 0)
+    {
+        printf("\nA frase %s e` um palindromo\n");
     }
     else
     {
-        for (size_t i = 0; i < strlen(str) - 6; i++)
-        {
-            if (str[i] == 'T')
-            {
-                size_t a = i + 7, b = 0;
-
-                printf("\ni = %d", i);
-
-                for (size_t j = i; j < a; j++)
-                {
-                    if (str[j] == keyboard[j - i])
-                    {
-                        if (b++ == 6)
-                        {
-                            changeString(str, ++j);
-                        }
-                    }
-                }
-            }
-        }
-
-        printf("\n%s", str);
+        printf("\nA frase %s nao e` um palindromo\n");
     }
 
     return 0;
-}
-
-int strpos(char *str, char *find, int offset)
-{
-    char stack[strlen(str)];
-    strncpy(stack, str + offset, strlen(str) - offset);
-
-    char *p = strstr(stack, find);
-    if (p)
-        return p - stack + offset;
-
-    return -1;
-}
-
-substr(char dest[], char src[], int offset, int len)
-{
-    size_t i;
-
-    for (i = 0; i < len && src[offset + i] != '\0'; i++)
-    {
-        dest[i] = src[i + offset];
-    }
-
-    dest[i] = '\0';
-}
-
-changeString(char str[], size_t end)
-{
-    char c[256], d[256];
-
-    for (size_t i = 0; i < end; i++)
-    {
-        c[i] = str[i];
-    }
-
-    substr(d, str, end, strlen(str));
-
-    strcat(c, " OU MOUSE");
-    strcat(c, d);
-
-    str[0] = '\0';
-
-    strcpy(str, c);
 }
