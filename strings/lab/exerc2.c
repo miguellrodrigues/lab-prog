@@ -26,30 +26,28 @@ int main(void)
     }
     else
     {
-        char t[7] = "       ";
-
-        for (size_t i = 0; i <= x; i++)
+        for (size_t i = 0; i < strlen(str) - 6; i++)
         {
             if (str[i] == 'T')
             {
-                size_t a = i  + 7, b = 0;
+                size_t a = i + 7, b = 0;
 
-                for(size_t j = i; j < a; j++) 
-                {   
+                printf("\ni = %d", i);
+
+                for (size_t j = i; j < a; j++)
+                {
                     if (str[j] == keyboard[j - i])
                     {
                         if (b++ == 6)
                         {
-                            printf("\n%d", j - 6);
+                            changeString(str, ++j);
                         }
                     }
                 }
-
-                //printf("\n%d", b);
-
-                printf("\n");
             }
         }
+
+        printf("\n%s", str);
     }
 
     return 0;
@@ -69,27 +67,31 @@ int strpos(char *str, char *find, int offset)
 
 substr(char dest[], char src[], int offset, int len)
 {
-    for (size_t i = 0; i < len && src[offset + i] != '\0'; i++)
+    size_t i;
+
+    for (i = 0; i < len && src[offset + i] != '\0'; i++)
     {
         dest[i] = src[i + offset];
     }
+
+    dest[i] = '\0';
 }
 
-char *changeString(char str[])
+changeString(char str[], size_t end)
 {
-    int pos = strpos(str, "TECLADO", 0);
-
     char c[256], d[256];
 
-    for (size_t i = 0; i <= pos + 6; i++)
+    for (size_t i = 0; i < end; i++)
     {
         c[i] = str[i];
     }
 
-    substr(d, str, pos + 7, strlen(str));
+    substr(d, str, end, strlen(str));
 
     strcat(c, " OU MOUSE");
     strcat(c, d);
 
-    return c;
+    str[0] = '\0';
+
+    strcpy(str, c);
 }
