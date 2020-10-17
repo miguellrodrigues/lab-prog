@@ -26,11 +26,15 @@ int main(void)
     }
     else
     {
+        size_t b;
+
         for (size_t i = 0; i < strlen(str) - 6; i++)
         {
             if (str[i] == 'T')
             {
-                size_t a = i + 7, b = 0;
+                size_t a = i + 7;
+
+                b = 0;
 
                 for (size_t j = i; j < a; j++)
                 {
