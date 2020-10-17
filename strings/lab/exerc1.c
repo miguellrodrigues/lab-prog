@@ -4,7 +4,6 @@
 
 int main(void)
 {
-
     char str[256], str1[256];
 
     char option, c1, c2;
@@ -28,7 +27,12 @@ int main(void)
         break;
 
     case 'B':
-        if (strcmp(str, cp))
+        printf("\nDigite a String S2: ");
+
+        fflush(stdin);
+        gets(str1);
+
+        if (strcmp(str, str1) == 0)
         {
             printf("\nStrings iguais");
         }
@@ -37,7 +41,7 @@ int main(void)
             printf("\nStrings diferentes");
         }
 
-        printf("\nStrings concatenadas: %s", strcat(str, cp));
+        printf("\nStrings concatenadas: %s", strcat(str, str1));
         break;
 
     case 'C':

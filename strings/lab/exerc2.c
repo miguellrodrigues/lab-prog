@@ -4,27 +4,52 @@
 
 int main(void)
 {
-    char str[256];
+    char str[256], keyboard[7] = "TECLADO";
+
+    fflush(stdin);
 
     printf("\nDigite uma frase: ");
     gets(str);
 
-    fflush(stdin);
+    int x = strlen(str) - 7;
 
-    for (size_t i = 0; i < strlen(str); i++)
+    if (x < 0)
     {
-        char *t = malloc(7 * sizeof(char));
-
-        for (size_t j = i, k = 0; j <= i + 6 && i + 6 < strlen(str); j++)
+        printf("\n\nNenhuma ocorrencia encontrada");
+    }
+    else if (x == 0)
+    {
+        if (strcmp(str, "TECLADO") == 0)
         {
-            t[k++] = str[j];
-
-            printf("\nA = %c", str[j]);
+            printf("\n\nTECLADO OU MOUSE\n");
         }
+    }
+    else
+    {
+        char t[7] = "       ";
 
-        printf("\n T = %s", t);
+        for (size_t i = 0; i <= x; i++)
+        {
+            if (str[i] == 'T')
+            {
+                size_t a = i  + 7, b = 0;
 
-        free(t);
+                for(size_t j = i; j < a; j++) 
+                {   
+                    if (str[j] == keyboard[j - i])
+                    {
+                        if (b++ == 6)
+                        {
+                            printf("\n%d", j - 6);
+                        }
+                    }
+                }
+
+                //printf("\n%d", b);
+
+                printf("\n");
+            }
+        }
     }
 
     return 0;
