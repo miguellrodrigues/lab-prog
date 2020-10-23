@@ -6,19 +6,12 @@ int main(void)
     char str[256];
 
     printf("\nDigite uma frase: ");
-    gets(str);
+    fgets(str, 256, stdin);
 
-    size_t count = 0;
+    char r[strlen(str)];
+    size_t end = strlen(str) - 1;
 
-    for(size_t i = 0; i < strlen(str); i++){
-        if (str[i] != '\0')
-            count++;;
-    }
-
-    char r[count];
-    size_t end = count - 1;
-
-    for (int i = 0; i < count; i++)
+    for (int i = 0; i < strlen(str) && str[i] != '\0'; i++)
     {
         r[i] = str[end--];
     }

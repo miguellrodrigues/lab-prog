@@ -6,10 +6,8 @@ int main(void)
 {
     char str[256], keyboard[7] = "TECLADO";
 
-    fflush(stdin);
-
     printf("\nDigite uma frase: ");
-    gets(str);
+    fgets(str, 256, stdin);
 
     int x = strlen(str) - 7;
 
@@ -27,8 +25,9 @@ int main(void)
     else
     {
         size_t b;
+        size_t len = strlen(str);
 
-        for (size_t i = 0; i < strlen(str) - 6; i++)
+        for (size_t i = 0; i < len; i++)
         {
             if (str[i] == 'T')
             {
@@ -43,6 +42,8 @@ int main(void)
                         if (b++ == 6)
                         {
                             changeString(str, j + 1);
+
+                            len = strlen(str);
                         }
                     }
                 }
@@ -80,8 +81,6 @@ void changeString(char str[], size_t end)
 
     strcat(c, " OU MOUSE");
     strcat(c, d);
-
-    str[0] = '\0';
 
     strcpy(str, c);
 }

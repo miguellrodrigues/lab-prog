@@ -24,6 +24,8 @@ int main(void)
 
         strcpy(cp, str);
         strcat(cp, "concatenada");
+
+        printf("\nConcat: %s\n", cp);
         break;
 
     case 'B':
