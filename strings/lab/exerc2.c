@@ -9,17 +9,11 @@ int main(void)
     printf("\nDigite uma palavra: ");
     gets(str);
 
-    size_t len = strlen(str), count = 0;
+    size_t len = strlen(str) - 1;
+
+    char inverse[len + 1];
 
     for (size_t i = 0; i < len; i++)
-    {
-        if (str[i] != '\0')
-            count++;
-    }
-
-    char inverse[count];
-
-    for (size_t i = 0; i < count; i++)
     {
         str[i] = tolower(str[i]);
     }
@@ -29,11 +23,11 @@ int main(void)
 
     if (strcmp(inverse, str) == 0)
     {
-        printf("\nA frase %s e` um palindromo\n");
+        printf("\nA palavra %s e` um palindromo\n");
     }
     else
     {
-        printf("\nA frase %s nao e` um palindromo\n");
+        printf("\nA palavra %s nao e` um palindromo\n");
     }
 
     return 0;

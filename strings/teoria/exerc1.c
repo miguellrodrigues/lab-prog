@@ -10,7 +10,7 @@ int main(void)
 
     printf("\nDigite uma string: ");
 
-    gets(str);
+    fgets(str, 256, stdin);
 
     char cp[strlen(str)];
 
@@ -20,12 +20,11 @@ int main(void)
     switch (option)
     {
     case 'A':
-        printf("\nTamanho: %d", strlen(str));
+        printf("\nTamanho: %d", strlen(str) - 1);
 
-        strcpy(cp, str);
-        strcat(cp, "concatenada");
+        strcat(str, "concatenada");
 
-        printf("\nConcat: %s\n", cp);
+        printf("\nConcatenada: %s\n", str);
         break;
 
     case 'B':
@@ -43,7 +42,8 @@ int main(void)
             printf("\nStrings diferentes");
         }
 
-        printf("\nStrings concatenadas: %s", strcat(str, str1));
+        printf("\n\nStrings concatenadas: %s", strcat(str, str1));
+
         break;
 
     case 'C':
