@@ -11,12 +11,16 @@ int main(void)
     char r[strlen(str)];
     size_t end = strlen(str) - 1;
 
-    for (int i = 0; i < strlen(str) && str[i] != '\0'; i++)
+    int i;
+
+    for (i = 0; i < strlen(str) && str[i] != '\0'; i++)
     {
         r[i] = str[end--];
     }
 
+    r[i] = '\0';
+
     printf("\n%s\n", r);
-    
+
     return 0;
 }

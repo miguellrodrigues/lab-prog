@@ -4,9 +4,11 @@
 
 int main(void)
 {
-    char str[256];
+    char str[60];
 
     printf("\nDigite uma palavra: ");
+
+    fflush(stdin);
     gets(str);
 
     size_t len = strlen(str) - 1;

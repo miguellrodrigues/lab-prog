@@ -1,16 +1,16 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 int main(void)
 {
-    char str[256], str1[256];
+    char str[60], str1[60];
 
     char option, c1, c2;
 
     printf("\nDigite uma string: ");
 
-    fgets(str, 256, stdin);
+    fflush(stdin);
+    gets(str);
 
     char cp[strlen(str)];
 
@@ -42,7 +42,7 @@ int main(void)
             printf("\nStrings diferentes");
         }
 
-        printf("\n\nStrings concatenadas: %s", strcat(str, str1));
+        printf("\n\nStrings concatenadas: %s\n", strcat(str, str1));
 
         break;
 
@@ -66,7 +66,7 @@ int main(void)
             }
         }
 
-        printf("\nResultado: %s", str);
+        printf("\nResultado: %s\n", str);
 
         break;
 
@@ -78,11 +78,11 @@ int main(void)
 
         if (strstr(str, str1) != NULL)
         {
-            printf("\nA string %s e uma substring de %s", str1, str);
+            printf("\nA string %s e uma substring de %s\n", str1, str);
         }
         else
         {
-            printf("\nA string %s nao e uma substring de %s", str1, str);
+            printf("\nA string %s nao e uma substring de %s\n", str1, str);
         }
 
         break;
