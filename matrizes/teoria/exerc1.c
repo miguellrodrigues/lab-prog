@@ -19,32 +19,24 @@ int main(void)
         scanf("%d", &data[i][2]);
 
         data[i][3] = data[i][1] + data[i][2];
-
-        system("cls");
     }
 
-    for (int i = 0; i < 5; ++i)
+    int higher = data[0][3], matricula = data[0][0];
+
+    for (size_t i = 0; i < 5; i++)
     {
-        int key = data[i][3];
-
-        int j = i - 1;
-
-        while (j >= 0 && data[j][3] > key)
+        if (data[i][3] > higher)
         {
-            data[j + 1][3] = data[j][3];
-            j--;
+            higher = data[i][3];
+            matricula = data[i][0];
         }
-
-        data[j + 1][3] = key;
     }
-
-    int higher = data[4][3];
-
-    printf("\nMaior nota final: Matricula: %d | Nota: %d\n", data[4][0], data[4][3]);
+    
+    printf("\nMaior nota final: Matricula: %d | Nota: %d\n", matricula, higher);
 
     for (size_t i = 0; i < 5; ++i)
     {
-        if (data[i][3] == higher && i != 0)
+        if (data[i][3] == higher && data[i][0] != matricula)
         {
             printf("\nMatricula: %d | Nota: %d", data[i][0], data[i][3]);
         }
