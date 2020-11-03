@@ -8,8 +8,7 @@ int main(void)
 
     printf("\nDigite uma palavra: ");
 
-    fflush(stdin);
-    gets(str);
+    fgets(str, 60, stdin);
 
     size_t len = strlen(str) - 1;
 
