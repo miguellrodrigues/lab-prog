@@ -1,9 +1,25 @@
 #include <stdio.h>
+#include <ctype.h>
 
-void decode(char *str, int pos, int size)
-{
+void encode(char *str, int pos, int size) {
   for(size_t i = 0; i < size && str[i] != '\0'; ++i) {
-    char c = str[i];
+    char c = toupper(str[i]);
+
+    if (c >= 'A' && c <= 'Z') {
+      c += pos;
+
+      if (c > 'Z') {
+        c = c - ('Z' + 'A') + 1;
+      }
+
+      str[i] = c;
+    }
+  }
+}
+
+void decode(char *str, int pos, int size) {
+  for(size_t i = 0; i < size && str[i] != '\0'; ++i) {
+    char c = toupper(str[i]);
 
     if (c >= 'A' && c <= 'Z') {
       c -= pos;
@@ -19,11 +35,28 @@ void decode(char *str, int pos, int size)
 
 int main(void)
 {
-  char toDecode[60] = "D OLJHLUD UDSRVD PDUURP VDOWRX VREUH RFDFKRUUR FDQVDGR";
+  char str[60];
+  int option;
 
-  decode(toDecode, 3, strlen(toDecode));
+  printf("\nDigite uma string: ");
+  fgets(str, sizeof(str), stdin);
 
-  printf("\nTexto decodificado: %s\n", toDecode);
+  do {
+    printf("\nSelecione uma opcao: \n1 (Codificar)\n2 (Decodificar)\n\n");
+    scanf("%d", &option);
+  }while(option < 1 || option > 2);
+
+  if (option == 1) {
+
+    encode(str, 3, strlen(str));
+
+    printf("\nString codificada: %s", str);
+
+  } else if (option == 2) {
+    decode(str, 3, strlen(str));
+
+    printf("\nString decodificada: %s", str);
+  }
 
   return 0;
 }
