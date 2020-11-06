@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 void readContactFile(char *str, char *lst[], char *delimiter, int *x) {
@@ -26,17 +27,19 @@ void split(char *str, char *dest[], char *delimiter) {
 }
 
 struct Contact {
-    char *name;
+    char name[16];
 
-    char *telephone;
-    char *birthday;
-    char *birthMonth;
+
+    char telephone[16];
+    char birthday[5];
+    char birthMonth[16];
 
     int remove;
 };
 
 int contactExistInArray(struct Contact contact, struct Contact array[], int size) {
-    for (size_t i = 0; i < size; ++i) {
+    size_t i;
+    for (i = 0; i < size; ++i) {
         struct Contact arrayContact = array[i];
 
         if (arrayContact.name == contact.name && arrayContact.birthMonth == contact.birthMonth &&
@@ -65,16 +68,17 @@ void loadAllContacts(struct Contact contacts[], int *size) {
 
     int j = 0;
 
-    for (size_t i = 0; i < contactsSize; ++i) {
+    size_t i;
+    for (i = 0; i < contactsSize; ++i) {
         char *contactString[4];
         split(contactList[i], contactString, ":");
 
         struct Contact contact;
 
-        contact.name = contactString[0];
-        contact.telephone = contactString[1];
-        contact.birthday = contactString[2];
-        contact.birthMonth = contactString[3];
+//        contact.name = contactString[0];
+//        contact.telephone = contactString[1];
+//        contact.birthday = contactString[2];
+//        contact.birthMonth = contactString[3];
 
         contact.remove = 0;
 
@@ -93,11 +97,12 @@ void saveContacts(struct Contact contacts[], int size) {
     int storedContactsSize;
     struct Contact storedContacts[1000];
 
-    loadAllContacts(storedContacts, &storedContactsSize);
+    //loadAllContacts(storedContacts, &storedContactsSize);
 
     FILE *contactsFile = fopen("/home/miguellr/CLionProjects/arquivos/contacts.txt", "w");
 
-    for (size_t i = 0; i < size; ++i) {
+    size_t i;
+    for (i = 0; i < size; ++i) {
         struct Contact contact = contacts[i];
 
         if (contactExistInArray(contact, storedContacts, storedContactsSize) || contact.remove)
@@ -122,9 +127,10 @@ void saveContacts(struct Contact contacts[], int size) {
 
 int main(void) {
     int size = 0;
-    struct Contact contacts[1000];
 
-    loadAllContacts(contacts, &size);
+    struct Contact *contacts = malloc (1024 * sizeof (struct Contact));;
+
+    //loadAllContacts(contacts, &size);
 
     int running = 1;
 
@@ -144,28 +150,38 @@ int main(void) {
 
         if (option == 1) {
             printf("\nDigite o nome: ");
-            scanf("%s", addName);
+            setbuf(stdin, NULL);
+            gets(addName);
 
             printf("\nDigite o telefone: ");
-            scanf("%s", addTelephone);
+            fflush(stdin);
+            fgets(addTelephone,16,stdin);
 
             printf("\nDigite o dia de nascimento: ");
-            scanf("%s", addDay);
+            fflush(stdin);
+            fgets(addDay,5,stdin);
 
             printf("\nDigite o mes de nascimento: ");
-            scanf("%s", addMn);
+            fflush(stdin);
+            fgets(addMn,12,stdin);
 
             int pos = size == 0 ? 0 : size;
 
             struct Contact add;
 
-            add.name = addName;
-            add.telephone = addTelephone;
-            add.birthday = addDay;
-            add.birthMonth = addMn;
+
+
+            strcpy(add.name,addName);
+            strcpy(add.telephone,addTelephone);
+            strcpy(add.birthday,addDay);
+            strcpy(add.birthMonth,addMn);
             add.remove = 0;
 
-            contacts[pos] = add;
+            strcpy(contacts[pos].name,add.name);
+            strcpy(contacts[pos].telephone, add.telephone);
+            strcpy(contacts[pos].birthday, add.birthday);
+            strcpy(contacts[pos].birthMonth, add.birthMonth);
+            contacts[pos].remove = add.remove;
 
             size += 1;
 
@@ -180,7 +196,8 @@ int main(void) {
 
             int found = 0;
 
-            for (int i = 0; i < size; ++i) {
+            int i;
+            for (i = 0; i < size; ++i) {
                 struct Contact contact = contacts[i];
 
                 if (contact.remove == 1)
@@ -218,7 +235,8 @@ int main(void) {
 
             int found = 0;
 
-            for (size_t i = 0; i < size; ++i) {
+            size_t i;
+            for (i = 0; i < size; ++i) {
                 struct Contact contact = contacts[i];
 
                 if (contact.remove)
@@ -245,7 +263,8 @@ int main(void) {
                 continue;
             }
 
-            for (int k = 0; k < size; k++) {
+            int k;
+            for (k = 0; k < size; k++) {
                 struct Contact contact = contacts[k];
 
                 if (contact.remove == 1)
@@ -271,7 +290,8 @@ int main(void) {
 
             int found = 0;
 
-            for (size_t i = 0; i < size; ++i) {
+            size_t i;
+            for (i = 0; i < size; ++i) {
                 struct Contact contact = contacts[i];
 
                 if (contact.remove)
@@ -301,7 +321,8 @@ int main(void) {
 
             int found = 0;
 
-            for (size_t i = 0; i < size; ++i) {
+            size_t i;
+            for (i = 0; i < size; ++i) {
                 struct Contact contact = contacts[i];
 
                 if (contact.remove)

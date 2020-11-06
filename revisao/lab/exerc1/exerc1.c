@@ -22,20 +22,22 @@ int main(void)
     }
   }
 
-  int sum = 0;
+  int sumLineColumn[4];
 
   for (size_t i = 0; i < 4; ++i) 
   {
-    for (size_t j = 0; j < 4; ++j)
+    sumLineColumn[i] = 0;
+
+    for (size_t j = 0; j < 6; ++j)
     {
-      for (size_t k = 0; k < 6; ++k)
-      {
-        sum += (m[i][k] + n[k][j]);
-      }
+      sumLineColumn[i] += m[i][j] + n[j][i];
     }
   }
 
-  printf("\n\nSoma = %d\n", sum);
+  for (size_t i = 0; i < 4; ++i)
+  {
+    printf("\nSoma da %d linha com a %d coluna: %d", i + 1, i + 1, sumLineColumn[i]);
+  }
 
   return 0;
 }
