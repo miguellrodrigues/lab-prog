@@ -19,17 +19,19 @@ int main(void)
 
   strcat(fileName, ".txt");
 
-  char lines[50][256];
+  char lines[50][256] = {{'\0'}};
 
   if (option == 1)
   {
-    FILE *readFile = fopen(fileName, "r");
+    FILE *readFile = fopen(fileName, "rb");
 
     if (readFile == NULL)
     {
       printf("Erro, arquivo nao encontrado");
       return 1;
     }
+
+    printf("\n");
 
     int i = 0;
 
