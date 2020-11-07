@@ -169,8 +169,6 @@ int main(void) {
 
             struct Contact add;
 
-
-
             strcpy(add.name,addName);
             strcpy(add.telephone,addTelephone);
             strcpy(add.birthday,addDay);
