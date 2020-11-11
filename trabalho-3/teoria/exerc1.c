@@ -2,19 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-void readContactFile(char *str, char *lst[], char *delimiter, int *x) {
-    char *token = strtok(str, delimiter);
-
-    int count = 0;
-
-    while (token != NULL) {
-        lst[count++] = token;
-        token = strtok(NULL, delimiter);
-    }
-
-    *x = count;
-}
-
 void split(char *str, char *dest[], char *delimiter) {
     char *token = strtok(str, delimiter);
 
@@ -29,56 +16,38 @@ void split(char *str, char *dest[], char *delimiter) {
 struct Contact {
     char name[16];
 
-
     char telephone[16];
     char birthday[5];
     char birthMonth[16];
 
-    int remove;
+    size_t remove;
 };
 
-int contactExistInArray(struct Contact contact, struct Contact array[], int size) {
-    size_t i;
-    for (i = 0; i < size; ++i) {
-        struct Contact arrayContact = array[i];
+void loadAllContacts(struct Contact contacts[], int *size) {
+    FILE *contactsFile = fopen("contacts.txt", "r");
 
-        if (arrayContact.name == contact.name && arrayContact.birthMonth == contact.birthMonth &&
-            arrayContact.birthday == contact.birthday && arrayContact.telephone == contact.telephone) {
-            return 1;
-        }
+    if (contactsFile == NULL) {
+        printf("\nPor favor, crie o arquivo contacts.txt na raiz do projeto");
+        exit(1);
     }
 
-    return 0;
-}
-
-void loadAllContacts(struct Contact contacts[], int *size) {
-    FILE *contactsFile = fopen("/home/miguellr/CLionProjects/arquivos/contacts.txt", "r");
-
-    int contactsSize = 0;
-
-    char buff[1024];
-    char *str = fgets(buff, 1024, contactsFile);
-
-    if (str == NULL)
-        return;
-
-    char *contactList[1024];
-
-    readContactFile(str, contactList, "-", &contactsSize);
+    char currentLine[1024] = {'\0'};
 
     int j = 0;
 
-    size_t i;
-    for (i = 0; i < contactsSize; ++i) {
+    while (fgets(currentLine, 1024, contactsFile) != NULL) {
+        currentLine[strlen(currentLine) - 1] = '\0';
+
         char *contactString[4];
-        split(contactList[i], contactString, ":");
+
+        split(currentLine, contactString, ":");
 
         struct Contact contact;
 
-//        contact.name = contactString[0];
-//        contact.telephone = contactString[1];
-//        contact.birthday = contactString[2];
-//        contact.birthMonth = contactString[3];
+        strcpy(contact.name, contactString[0]);
+        strcpy(contact.telephone, contactString[1]);
+        strcpy(contact.birthday, contactString[2]);
+        strcpy(contact.birthMonth, contactString[3]);
 
         contact.remove = 0;
 
@@ -94,21 +63,15 @@ void saveContacts(struct Contact contacts[], int size) {
     if (size == 0)
         return;
 
-    int storedContactsSize;
-    struct Contact storedContacts[1000];
+    FILE *contactsFile = fopen("contacts.txt", "w+");
 
-    //loadAllContacts(storedContacts, &storedContactsSize);
-
-    FILE *contactsFile = fopen("/home/miguellr/CLionProjects/arquivos/contacts.txt", "w");
-
-    size_t i;
-    for (i = 0; i < size; ++i) {
+    for (size_t i = 0; i < size; ++i) {
         struct Contact contact = contacts[i];
 
-        if (contactExistInArray(contact, storedContacts, storedContactsSize) || contact.remove)
+        if (contact.remove)
             continue;
 
-        char data[128];
+        char data[256] = {'\0'};
 
         strcat(data, contact.name);
         strcat(data, ":");
@@ -117,7 +80,7 @@ void saveContacts(struct Contact contacts[], int size) {
         strcat(data, contact.birthday);
         strcat(data, ":");
         strcat(data, contact.birthMonth);
-        strcat(data, "-");
+        strcat(data, "\n");
 
         fputs(data, contactsFile);
     }
@@ -128,9 +91,9 @@ void saveContacts(struct Contact contacts[], int size) {
 int main(void) {
     int size = 0;
 
-    struct Contact *contacts = malloc (1024 * sizeof (struct Contact));;
+    struct Contact *contacts = calloc(1024, sizeof(struct Contact));;
 
-    //loadAllContacts(contacts, &size);
+    loadAllContacts(contacts, &size);
 
     int running = 1;
 
@@ -138,9 +101,9 @@ int main(void) {
 
     char *month = "novembro";
 
-    char searchName[16];
+    char searchName[16] = {'\0'};
 
-    char addName[16], addTelephone[16], addDay[2], addMn[12];
+    char addName[16] = {'\0'}, addTelephone[16] = {'\0'}, addDay[5] = {'\0'}, addMn[12] = {'\0'};
 
     while (running) {
         do {
@@ -149,39 +112,42 @@ int main(void) {
         } while (option < 1 || option > 7);
 
         if (option == 1) {
+
             printf("\nDigite o nome: ");
             setbuf(stdin, NULL);
-            gets(addName);
+            fgets(addName, 16, stdin);
 
             printf("\nDigite o telefone: ");
-            fflush(stdin);
-            fgets(addTelephone,16,stdin);
+            setbuf(stdin, NULL);
+            fgets(addTelephone, 16, stdin);
 
             printf("\nDigite o dia de nascimento: ");
-            fflush(stdin);
-            fgets(addDay,5,stdin);
+            setbuf(stdin, NULL);
+            fgets(addDay, 5, stdin);
 
             printf("\nDigite o mes de nascimento: ");
-            fflush(stdin);
-            fgets(addMn,12,stdin);
+            setbuf(stdin, NULL);
+            fgets(addMn, 12, stdin);
 
             int pos = size == 0 ? 0 : size;
 
             struct Contact add;
 
-            strcpy(add.name,addName);
-            strcpy(add.telephone,addTelephone);
-            strcpy(add.birthday,addDay);
-            strcpy(add.birthMonth,addMn);
+            addName[strlen(addName) - 1] = '\0';
+            addTelephone[strlen(addTelephone) - 1] = '\0';
+            addDay[strlen(addDay) - 1] = '\0';
+            addMn[strlen(addMn) - 1] = '\0';
+
+            strcpy(add.name, addName);
+            strcpy(add.telephone, addTelephone);
+            strcpy(add.birthday, addDay);
+            strcpy(add.birthMonth, addMn);
+
             add.remove = 0;
 
-            strcpy(contacts[pos].name,add.name);
-            strcpy(contacts[pos].telephone, add.telephone);
-            strcpy(contacts[pos].birthday, add.birthday);
-            strcpy(contacts[pos].birthMonth, add.birthMonth);
-            contacts[pos].remove = add.remove;
+            contacts[pos] = add;
 
-            size += 1;
+            size++;
 
         } else if (option == 2) {
             if (size == 0) {
@@ -190,33 +156,33 @@ int main(void) {
             }
 
             printf("\nDigite o nome que voce procura: ");
-            scanf("%s", searchName);
+            setbuf(stdin, NULL);
+            fgets(searchName, 16, stdin);
+
+            searchName[strlen(searchName) - 1] = '\0';
 
             int found = 0;
 
-            int i;
-            for (i = 0; i < size; ++i) {
+            for (int i = 0; i < size; ++i) {
                 struct Contact contact = contacts[i];
 
-                if (contact.remove == 1)
+                if (contact.remove)
                     continue;
 
-                if (strcmp(contact.name, searchName) == 0)
-                {
-                    contact.remove = 1;
+                if (strcmp(contact.name, searchName) == 0) {
 
                     printf("\nO Contato %s foi exluido", contact.name);
 
-                    contacts[i] = contact;
+                    contact.remove = 1;
 
-                    size--;
+                    contacts[i] = contact;
 
                     found = 1;
                     break;
                 }
             }
 
-            if(found == 0) {
+            if (found == 0) {
                 printf("\nNenhum contato encontrado com o nome %s", searchName);
             }
 
@@ -226,22 +192,19 @@ int main(void) {
                 continue;
             }
 
-            printf("Digite o nome que voce procura: ");
-
             printf("\nDigite o nome que voce procura: ");
-            scanf("%s", searchName);
+            setbuf(stdin, NULL);
+            fgets(searchName, 16, stdin);
 
             int found = 0;
 
-            size_t i;
-            for (i = 0; i < size; ++i) {
+            for (size_t i = 0; i < size; ++i) {
                 struct Contact contact = contacts[i];
 
                 if (contact.remove)
                     continue;
 
-                if (strcmp(contact.name, searchName) == 0)
-                {
+                if (strcmp(contact.name, searchName) == 0) {
                     printf("\nNome: %s", contact.name);
                     printf("\nNascimento: %s de %s", contact.birthday, contact.birthMonth);
                     printf("\nTelefone: %s\n", contact.telephone);
@@ -251,7 +214,7 @@ int main(void) {
                 }
             }
 
-            if(found == 0) {
+            if (found == 0) {
                 printf("\nNenhum contato encontrado com o nome %s", searchName);
             }
 
@@ -261,11 +224,10 @@ int main(void) {
                 continue;
             }
 
-            int k;
-            for (k = 0; k < size; k++) {
+            for (size_t k = 0; k < size; k++) {
                 struct Contact contact = contacts[k];
 
-                if (contact.remove == 1)
+                if (contact.remove)
                     continue;
 
                 printf("\nNome: %s", contact.name);
@@ -288,24 +250,22 @@ int main(void) {
 
             int found = 0;
 
-            size_t i;
-            for (i = 0; i < size; ++i) {
+            for (size_t i = 0; i < size; ++i) {
                 struct Contact contact = contacts[i];
 
                 if (contact.remove)
                     continue;
 
-                if (contact.name[0] == start)
-                {
+                if (contact.name[0] == start) {
                     printf("\nNome: %s", contact.name);
-                    printf("\nNascimento: %s/%s", contact.birthday, contact.birthMonth);
+                    printf("\nNascimento: %s de %s", contact.birthday, contact.birthMonth);
                     printf("\nTelefone: %s\n", contact.telephone);
 
                     found = 1;
                 }
             }
 
-            if(found == 0) {
+            if (found == 0) {
                 printf("\nNenhum contato encontrado com a incial %c", start);
             }
 
@@ -319,15 +279,13 @@ int main(void) {
 
             int found = 0;
 
-            size_t i;
-            for (i = 0; i < size; ++i) {
+            for (size_t i = 0; i < size; ++i) {
                 struct Contact contact = contacts[i];
 
                 if (contact.remove)
                     continue;
 
-                if (strcmp(contact.birthMonth, month) == 0)
-                {
+                if (strcmp(contact.birthMonth, month) == 0) {
                     printf("\nNome: %s", contact.name);
                     printf("\nNascimento: %s de %s", contact.birthday, contact.birthMonth);
                     printf("\nTelefone: %s\n", contact.telephone);
@@ -336,7 +294,7 @@ int main(void) {
                 }
             }
 
-            if(found == 0) {
+            if (found == 0) {
                 printf("\nNao foram encontrados aniversariantes do mes");
             }
         } else {
