@@ -56,34 +56,23 @@
  * @date 21 Nov 2020
  */
 
-/*! @include stdio.h Inclusão da bibliteca IO */
 #include <stdio.h>
-
-/*! @include string.h Inclusão da biblioteca de strings */
 #include <string.h>
-
-/*! @include string.h Inclusão da biblioteca de alocação de memória */
 #include <malloc.h>
-
-/*! @include ctype.h Inclusão da biblioteca ctype.h */
 #include <ctype.h>
 
-/*! @def Máximo de clientes por mesa */
 #ifndef MAX_CLIENTS_TABLE
 #define MAX_CLIENTS_TABLE 4
 #endif
 
-/*! @def Máximo de mesas por reserva */
 #ifndef MAX_TABLES_PER_RESERVE
 #define MAX_TABLES_PER_RESERVE 50
 #endif
 
-/*! @def Máximo de reservas */
 #ifndef MAX_RESERVES
 #define MAX_RESERVES 50
 #endif
 
-/*! @def Máximo de reservas */
 #ifndef MAX_TABLES
 #define MAX_TABLES 50
 #endif
@@ -101,7 +90,8 @@ typedef unsigned int uint;
  * @field       telephone      Telefone do cliente
  * @field       email          Email do cliente
  */
-struct client {
+struct client
+{
 
     char name[16];
     char telephone[10];
@@ -119,7 +109,8 @@ struct client {
  * @field       telephone      Telefone do cliente
  * @field       email          Email do cliente
  */
-struct table {
+struct table
+{
 
     Client clients[MAX_CLIENTS_TABLE];
 
@@ -137,7 +128,8 @@ struct table {
  * @field       tables         Mesas da reserva
  * @field       id             Id da reserva
  */
-struct reserve {
+struct reserve
+{
 
     Table tables[MAX_TABLES_PER_RESERVE];
 
@@ -147,16 +139,19 @@ struct reserve {
 
 /**
  * @brief
- * Retorna o número de mesas em uma reserva
+ * Verifica quantas mesas ativas tem uma reserva
  *
  * @param       reserve        Reserva que se deseja analisar
  * @return      Número que mesas em uma reserva
  */
-uint activeTables(Reserve *reserve) {
+uint activeTables(Reserve *reserve)
+{
     uint x = 0;
 
-    for (uint i = 0; i < 50; ++i) {
-        if (reserve->tables[i].id) {
+    for (uint i = 0; i < 50; ++i)
+    {
+        if (reserve->tables[i].id)
+        {
             x++;
         }
     }
@@ -164,16 +159,30 @@ uint activeTables(Reserve *reserve) {
     return x;
 }
 
-uint tableReserved(Reserve *reserves, uint size, uint id) {
-    if (id < 0 || id > 50) {
+/**
+ * @brief
+ * Verifica se uma determinada mesa está reservada
+ *
+ * @param       reserves       Lista de reservas
+ * @param       size           Tamanho de reserves
+ * @param       id             Id da mesa a verificar
+ * @return
+ */
+uint tableReserved(Reserve *reserves, uint size, uint id)
+{
+    if (id < 0 || id > 50)
+    {
         return 0;
     }
 
-    for (uint i = 0; i < size; ++i) {
+    for (uint i = 0; i < size; ++i)
+    {
         Reserve reserve = *(reserves + i);
 
-        for (uint j = 0; j < activeTables(&reserve); ++j) {
-            if (reserve.tables[j].id == id) {
+        for (uint j = 0; j < activeTables(&reserve); ++j)
+        {
+            if (reserve.tables[j].id == id)
+            {
                 return 1;
             }
         }
@@ -191,12 +200,16 @@ uint tableReserved(Reserve *reserves, uint size, uint id) {
  * @param       result         Ponteiro para a variável que irá armazenar
  *                             o número de clientes ativos da lista
  */
-uint clients(Reserve *reserves, uint size) {
+uint clients(Reserve *reserves, uint size)
+{
     uint x = 0;
 
-    for (uint i = 0; i < size; ++i) {
-        for (uint j = 0; j < activeTables(&reserves[i]); ++j) {
-            if (reserves[i].tables[j].id) {
+    for (uint i = 0; i < size; ++i)
+    {
+        for (uint j = 0; j < activeTables(&reserves[i]); ++j)
+        {
+            if (reserves[i].tables[j].id)
+            {
                 x += reserves[i].tables[j].activeClients;
             }
         }
@@ -205,7 +218,8 @@ uint clients(Reserve *reserves, uint size) {
     return x;
 }
 
-int main() {
+int main()
+{
     Reserve *reserves = calloc(MAX_RESERVES, sizeof(Reserve));
 
     char fileName[16];
@@ -221,7 +235,8 @@ int main() {
 
     FILE *file = fopen(fileName, "ab+");
 
-    if (file == NULL) {
+    if (file == NULL)
+    {
         printf("\nOcorreu um erro ao criar/abrir o arquivo");
         return 1;
     }
@@ -230,7 +245,8 @@ int main() {
 
     uint j = 0, reservedTables = 0;
 
-    while (1) {
+    while (1)
+    {
         fread(inputReserve, sizeof(Reserve), 1, file);
 
         if (feof(file))
@@ -253,23 +269,28 @@ int main() {
 
     char option;
 
-    while (running) {
-        if (reservedTables == 50) {
+    while (running)
+    {
+        if (reservedTables == 50)
+        {
             printf("\nTodas as mesas foram reservadas, finalizando programa\n");
             break;
         }
 
-        do {
+        do
+        {
             printf("\nSelecione uma opcao: ");
             scanf(" %c", &option);
 
-            option = (char) tolower(option);
+            option = (char)tolower(option);
         } while (option < 'a' || option > 'f');
 
-        if (option == 'a') {
+        if (option == 'a')
+        {
             uint reserveTables = 0;
 
-            do {
+            do
+            {
                 printf("\nDigite o numero de mesas que deseja reservar: ");
                 scanf("%d", &reserveTables);
             } while ((reserveTables < 1 || reserveTables > 50) || (reservedTables + reserveTables) > 50);
@@ -280,10 +301,12 @@ int main() {
 
             reserve->id = id;
 
-            for (uint i = 0; i < reserveTables; ++i) {
+            for (uint i = 0; i < reserveTables; ++i)
+            {
                 uint tableId = 0;
 
-                do {
+                do
+                {
                     printf("\nDigite o numero da mesa %d: ", i + 1);
                     scanf("%d", &tableId);
                 } while (tableReserved(reserves, reservesSize, tableId));
@@ -292,7 +315,8 @@ int main() {
 
                 int tableClients = 0;
 
-                do {
+                do
+                {
                     printf("\nDigite o numero de clientes da %d mesa: ", i + 1);
                     scanf("%d", &tableClients);
                 } while (tableClients < 0 || tableClients > 4);
@@ -302,7 +326,8 @@ int main() {
                 char input[20];
                 char name[16];
 
-                for (uint k = 0; k < tableClients; ++k) {
+                for (uint k = 0; k < tableClients; ++k)
+                {
                     printf("\nDigite o nome do %d cliente da %d mesa: ", k + 1, i + 1);
 
                     setbuf(stdin, NULL);
@@ -343,15 +368,20 @@ int main() {
             reservesSize++;
 
             printf("\nReserva realizada com sucesso \n");
-        } else if (option == 'b') {
+        }
+        else if (option == 'b')
+        {
             uint reserveId, found = 0;
 
             printf("\nDigite o id da reserva que voce deseja remover: ");
             scanf("%d", &reserveId);
 
-            for (uint i = 0; i < reservesSize; ++i) {
-                if ((reserves + i)->id == reserveId) {
-                    for (uint k = i; k < reservesSize - 1; ++k) {
+            for (uint i = 0; i < reservesSize; ++i)
+            {
+                if ((reserves + i)->id == reserveId)
+                {
+                    for (uint k = i; k < reservesSize - 1; ++k)
+                    {
                         reserves[k] = reserves[k + 1];
                     }
 
@@ -364,29 +394,36 @@ int main() {
                 }
             }
 
-            if (!found) {
+            if (!found)
+            {
                 printf("\nReserva nao encontrada\n");
             }
-        } else if (option == 'c') {
+        }
+        else if (option == 'c')
+        {
             uint reserveId, found = 0;
 
             printf("\nDigite o id da reserva que voce procura: ");
             scanf("%d", &reserveId);
 
-            for (uint i = 0; i < reservesSize; ++i) {
-                if ((reserves + i)->id == reserveId) {
+            for (uint i = 0; i < reservesSize; ++i)
+            {
+                if ((reserves + i)->id == reserveId)
+                {
                     Reserve reserve = *(reserves + i);
 
                     uint reserveTables = activeTables(&reserve);
 
                     printf("\nNumero de mesas: %d\n", reserveTables);
 
-                    for (uint k = 0; k < reserveTables; ++k) {
+                    for (uint k = 0; k < reserveTables; ++k)
+                    {
                         printf("\nMesa %d\n", k + 1);
 
                         printf("\nClientes ativos: %d\n", reserve.tables[k].activeClients);
 
-                        for (uint l = 0; l < reserve.tables[k].activeClients; ++l) {
+                        for (uint l = 0; l < reserve.tables[k].activeClients; ++l)
+                        {
                             printf("\nNome cliente %d: %s", l + 1, reserve.tables[k].clients[l].name);
                             printf("\nTelefone cliente %d: %s", l + 1, reserve.tables[k].clients[l].telephone);
                             printf("\nEmail cliente %d: %s", l + 1, reserve.tables[k].clients[l].email);
@@ -401,12 +438,17 @@ int main() {
                 }
             }
 
-            if (!found) {
+            if (!found)
+            {
                 printf("\nReserva nao encontrada\n");
             }
-        } else if (option == 'd') {
-            if (reservesSize > 0) {
-                for (uint i = 0; i < reservesSize; ++i) {
+        }
+        else if (option == 'd')
+        {
+            if (reservesSize > 0)
+            {
+                for (uint i = 0; i < reservesSize; ++i)
+                {
                     Reserve reserve = *(reserves + i);
 
                     uint reserveTables = activeTables(&reserve);
@@ -414,12 +456,14 @@ int main() {
                     printf("\nId da Reserva: %d", reserve.id);
                     printf("\nNumero de mesas: %d", reserveTables);
 
-                    for (uint k = 0; k < reserveTables; ++k) {
+                    for (uint k = 0; k < reserveTables; ++k)
+                    {
                         printf("\n\nMesa %d\n", k + 1);
 
                         printf("Clientes ativos: %d\n", reserve.tables[k].activeClients);
 
-                        for (uint l = 0; l < reserve.tables[k].activeClients; ++l) {
+                        for (uint l = 0; l < reserve.tables[k].activeClients; ++l)
+                        {
                             printf("\nNome cliente %d: %s", l + 1, reserve.tables[k].clients[l].name);
                             printf("\nTelefone cliente %d: %s", l + 1, reserve.tables[k].clients[l].telephone);
                             printf("\nEmail cliente %d: %s", l + 1, reserve.tables[k].clients[l].email);
@@ -430,40 +474,48 @@ int main() {
                         printf("\n");
                     }
                 }
-            } else {
+            }
+            else
+            {
                 printf("\nNao foram encontradas reservas\n");
             }
-        } else if (option == 'e') {
+        }
+        else if (option == 'e')
+        {
             uint activeTables = reservedTables;
 
             printf("\nTaxa de ocupacao das mesas: %d de %d (%.2f por cento)\n", activeTables, 50,
-                   (float) (activeTables * 10.0) / 5.0);
+                   (float)(activeTables * 10.0) / 5.0);
 
-            uint activeClients = clients(reserves, reservesSize);
+            uint activeClients = clients((Reserve *)reserves, reservesSize);
 
-            float a = (float) ((200.0 / activeClients) * (50.0 / activeTables));
+            float a = (float)((200.0 / activeClients) * (50.0 / activeTables));
             float b = (100.0F / a);
 
             printf("\nTaxa de ocupacao de pessoas: %d em %d mesas (%.2f por cento)\n", activeClients, activeTables, b);
-        } else {
+        }
+        else
+        {
             running = 0;
         }
     }
 
     file = fopen(fileName, "wb");
 
-    if (file == NULL) {
+    if (file == NULL)
+    {
         printf("\nErro ao carregar o arquivo");
         return 1;
     }
 
-    if (reservesSize > 0) {
-        fwrite((Reserve *) reserves, sizeof(Reserve), reservesSize, file);
+    if (reservesSize > 0)
+    {
+        fwrite((Reserve *)reserves, sizeof(Reserve), reservesSize, file);
     }
 
     fclose(file);
 
-    free((Reserve *) reserves);
+    free((Reserve *)reserves);
 
     return 0;
 }
