@@ -150,7 +150,7 @@ uint activeTables(Reserve *reserve)
 
     for (uint i = 0; i < 50; ++i)
     {
-        if (reserve->tables[i].id)
+        if ((reserve->tables + i)->id)
         {
             x++;
         }
@@ -177,11 +177,13 @@ uint tableReserved(Reserve *reserves, uint size, uint id)
 
     for (uint i = 0; i < size; ++i)
     {
-        Reserve reserve = *(reserves + i);
+        Reserve *reserve = (reserves + i);
 
-        for (uint j = 0; j < activeTables(&reserve); ++j)
+        for (uint j = 0; j < activeTables(reserve); ++j)
         {
-            if (reserve.tables[j].id == id)
+            Table *table = (reserve->tables + j);
+
+            if (table->id == id)
             {
                 return 1;
             }
@@ -206,11 +208,15 @@ uint clients(Reserve *reserves, uint size)
 
     for (uint i = 0; i < size; ++i)
     {
-        for (uint j = 0; j < activeTables(&reserves[i]); ++j)
+        Reserve *reserve = (reserves + i);
+
+        for (uint j = 0; j < activeTables(reserve); ++j)
         {
-            if (reserves[i].tables[j].id)
+            Table *table = (reserve->tables + j);
+
+            if (table->id)
             {
-                x += reserves[i].tables[j].activeClients;
+                x += table->activeClients;
             }
         }
     }
@@ -254,7 +260,7 @@ int main()
 
         reservedTables += activeTables(inputReserve);
 
-        memcpy(&reserves[j], inputReserve, sizeof(Reserve));
+        memcpy(reserves + j, inputReserve, sizeof(Reserve));
 
         j++;
     }
