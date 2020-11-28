@@ -267,7 +267,7 @@ int main()
 
     uint running = 1;
 
-    char option;
+    char option, input[20], name[16];
 
     while (running)
     {
@@ -326,8 +326,6 @@ int main()
                 } while (tableClients < 0 || tableClients > 4);
 
                 table->activeClients = tableClients;
-
-                char input[20], name[16];
 
                 for (uint k = 0; k < tableClients; ++k)
                 {
