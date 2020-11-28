@@ -298,6 +298,7 @@ int main()
             uint id = reservesSize == 0 ? 1 : (reserves + (reservesSize - 1))->id + 1;
 
             Reserve *reserve = calloc(1, sizeof(Reserve));
+            Table *tables = reserve->tables;
 
             reserve->id = id;
 
@@ -311,24 +312,28 @@ int main()
                     scanf("%d", &tableId);
                 } while (tableReserved(reserves, reservesSize, tableId) || (tableId < 1 || tableId > 50));
 
-                reserve->tables[i].id = tableId;
+                Table *table = (tables + i);
+                table->id = tableId;
+
+                Client *clients = table->clients;
 
                 int tableClients = 0;
 
                 do
                 {
-                    printf("\nDigite o numero de clientes da %d mesa: ", i + 1);
+                    printf("\nDigite o numero de clientes da mesa %d: ", tableId);
                     scanf("%d", &tableClients);
                 } while (tableClients < 0 || tableClients > 4);
 
-                reserve->tables[i].activeClients = tableClients;
+                table->activeClients = tableClients;
 
-                char input[20];
-                char name[16];
+                char input[20], name[16];
 
                 for (uint k = 0; k < tableClients; ++k)
                 {
-                    printf("\nDigite o nome do %d cliente da %d mesa: ", k + 1, i + 1);
+                    Client *client = (clients + k);
+
+                    printf("\nDigite o nome do %d cliente da mesa %d: ", k + 1, tableId);
 
                     setbuf(stdin, NULL);
                     fgets(input, 16, stdin);
@@ -337,7 +342,7 @@ int main()
 
                     strcpy(name, input);
 
-                    strcpy(reserve->tables[i].clients[k].name, input);
+                    strcpy(client->name, input);
 
                     printf("\nDigite o telefone do(a) %s: ", name);
 
@@ -346,7 +351,7 @@ int main()
 
                     input[strlen(input) - 1] = '\0';
 
-                    strcpy(reserve->tables[i].clients[k].telephone, input);
+                    strcpy(client->telephone, input);
 
                     printf("\nDigite o email do(a) %s: ", name);
 
@@ -355,7 +360,7 @@ int main()
 
                     input[strlen(input) - 1] = '\0';
 
-                    strcpy(reserve->tables[i].clients[k].email, input);
+                    strcpy(client->email, input);
                 }
             }
 
@@ -410,23 +415,32 @@ int main()
             {
                 if ((reserves + i)->id == reserveId)
                 {
-                    Reserve reserve = *(reserves + i);
+                    Reserve *reserve = (reserves + i);
+                    Table *tables = reserve->tables;
 
-                    uint reserveTables = activeTables(&reserve);
+                    uint reserveTables = activeTables(reserve);
 
                     printf("\nNumero de mesas: %d\n", reserveTables);
 
                     for (uint k = 0; k < reserveTables; ++k)
                     {
-                        printf("\nMesa %d\n", k + 1);
+                        Table *table = (tables + k);
 
-                        printf("\nClientes ativos: %d\n", reserve.tables[k].activeClients);
+                        printf("\nMesa %d\n", table->id);
 
-                        for (uint l = 0; l < reserve.tables[k].activeClients; ++l)
+                        uint activeClients = table->activeClients;
+
+                        Client *clients = table->clients;
+
+                        printf("\nClientes ativos: %d\n", activeClients);
+
+                        for (uint l = 0; l < activeClients; ++l)
                         {
-                            printf("\nNome cliente %d: %s", l + 1, reserve.tables[k].clients[l].name);
-                            printf("\nTelefone cliente %d: %s", l + 1, reserve.tables[k].clients[l].telephone);
-                            printf("\nEmail cliente %d: %s", l + 1, reserve.tables[k].clients[l].email);
+                            Client client = *(clients + l);
+
+                            printf("\nNome cliente %d: %s", l + 1, client.name);
+                            printf("\nTelefone cliente %d: %s", l + 1, client.telephone);
+                            printf("\nEmail cliente %d: %s", l + 1, client.email);
 
                             printf("\n");
                         }
@@ -450,23 +464,32 @@ int main()
                 for (uint i = 0; i < reservesSize; ++i)
                 {
                     Reserve reserve = *(reserves + i);
+                    Table *tables = reserve.tables;
 
                     uint reserveTables = activeTables(&reserve);
 
                     printf("\nId da Reserva: %d", reserve.id);
-                    printf("\nNumero de mesas: %d", reserveTables);
+                    printf("\nNumero de mesas: %d\n", reserveTables);
 
                     for (uint k = 0; k < reserveTables; ++k)
                     {
-                        printf("\n\nMesa %d\n", k + 1);
+                        Table *table = (tables + k);
 
-                        printf("Clientes ativos: %d\n", reserve.tables[k].activeClients);
+                        printf("\nMesa %d\n", table->id);
 
-                        for (uint l = 0; l < reserve.tables[k].activeClients; ++l)
+                        uint activeClients = table->activeClients;
+
+                        Client *clients = table->clients;
+
+                        printf("\nClientes ativos: %d\n", activeClients);
+
+                        for (uint l = 0; l < activeClients; ++l)
                         {
-                            printf("\nNome cliente %d: %s", l + 1, reserve.tables[k].clients[l].name);
-                            printf("\nTelefone cliente %d: %s", l + 1, reserve.tables[k].clients[l].telephone);
-                            printf("\nEmail cliente %d: %s", l + 1, reserve.tables[k].clients[l].email);
+                            Client client = *(clients + l);
+
+                            printf("\nNome cliente %d: %s", l + 1, client.name);
+                            printf("\nTelefone cliente %d: %s", l + 1, client.telephone);
+                            printf("\nEmail cliente %d: %s", l + 1, client.email);
 
                             printf("\n");
                         }
