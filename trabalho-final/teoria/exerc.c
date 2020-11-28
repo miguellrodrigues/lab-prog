@@ -170,7 +170,7 @@ uint activeTables(Reserve *reserve)
  */
 uint tableReserved(Reserve *reserves, uint size, uint id)
 {
-    if (id < 0 || id > 50)
+    if (id < 1 || id > 50)
     {
         return 0;
     }
@@ -309,7 +309,7 @@ int main()
                 {
                     printf("\nDigite o numero da mesa %d: ", i + 1);
                     scanf("%d", &tableId);
-                } while (tableReserved(reserves, reservesSize, tableId));
+                } while (tableReserved(reserves, reservesSize, tableId) || (tableId < 1 || tableId > 50));
 
                 reserve->tables[i].id = tableId;
 
