@@ -321,8 +321,6 @@ int main()
                 Table *table = (tables + i);
                 table->id = tableId;
 
-                Client *clients = table->clients;
-
                 int tableClients = 0;
 
                 do
@@ -332,6 +330,8 @@ int main()
                 } while (tableClients < 0 || tableClients > 4);
 
                 table->activeClients = tableClients;
+
+                Client *clients = table->clients;
 
                 for (uint k = 0; k < tableClients; ++k)
                 {
