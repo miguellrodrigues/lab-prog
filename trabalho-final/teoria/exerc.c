@@ -134,7 +134,7 @@ struct reserve
     Table tables[MAX_TABLES_PER_RESERVE];
 
     uint id;
-
+    
 } typedef Reserve;
 
 /**
