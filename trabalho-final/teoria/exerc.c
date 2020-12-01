@@ -134,7 +134,7 @@ struct reserve
     Table tables[MAX_TABLES_PER_RESERVE];
 
     uint id;
-    
+
 } typedef Reserve;
 
 /**
@@ -142,7 +142,7 @@ struct reserve
  * Verifica quantas mesas ativas tem uma reserva
  *
  * @param       reserve        Reserva que se deseja analisar
- * @return      Número que mesas em uma reserva
+ * @return                     Número de mesas em uma reserva
  */
 uint activeTables(Reserve *reserve)
 {
@@ -166,7 +166,7 @@ uint activeTables(Reserve *reserve)
  * @param       reserves       Lista de reservas
  * @param       size           Tamanho de reserves
  * @param       id             Id da mesa a verificar
- * @return
+ * @return                     1 se a mesa está reservada e 0 se não
  */
 uint tableReserved(Reserve *reserves, uint size, uint id)
 {
@@ -200,7 +200,7 @@ uint tableReserved(Reserve *reserves, uint size, uint id)
  * @param       reserves       Lista contento as reservas
  * @param       size           Tamanho da lista
  * @param       result         Ponteiro para a variável que irá armazenar
- *                             o número de clientes ativos da lista
+ * @return                     O número de clientes ativos da lista
  */
 uint clients(Reserve *reserves, uint size)
 {
@@ -321,6 +321,8 @@ int main()
                 Table *table = (tables + i);
                 table->id = tableId;
 
+                Client *clients = table->clients;
+
                 int tableClients = 0;
 
                 do
@@ -330,8 +332,6 @@ int main()
                 } while (tableClients < 0 || tableClients > 4);
 
                 table->activeClients = tableClients;
-
-                Client *clients = table->clients;
 
                 for (uint k = 0; k < tableClients; ++k)
                 {
@@ -389,12 +389,13 @@ int main()
             {
                 if ((reserves + i)->id == reserveId)
                 {
-                    for (uint k = i; k < reservesSize - 1; ++k)
+                    reservedTables -= activeTables(reserves + i);
+
+                    for (uint k = i; k < reservesSize; ++k)
                     {
                         reserves[k] = reserves[k + 1];
                     }
 
-                    reservedTables -= activeTables(reserves + i);
                     reservesSize--;
 
                     printf("\nReserva removida com sucesso\n");
